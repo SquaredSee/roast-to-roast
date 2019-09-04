@@ -3,6 +3,7 @@
 ## Team Members
 ### Colton Crouch
 * email: colton.crouch96@gmail.com
+* email: crouchcw@mail.uc.edu
 
 ### Brian Rutherford
 * email:

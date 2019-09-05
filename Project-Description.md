@@ -6,8 +6,8 @@
 * email: crouchcw@mail.uc.edu
 
 ### Brian Rutherford
-* email:Brian.Rutherford45@outlook.com
-* email:rutherbm@mail.uc.edu
+* email: Brian.Rutherford45@outlook.com
+* email: rutherbm@mail.uc.edu
 
 ## Advisor: TBD
 

@@ -26,5 +26,10 @@ Too many sources to hunt through (i.e. subreddit for the city, Yelp, TripAdvisor
 * _Soft Skills_: Project management, communication, documentation of process, process creation, program management
 * _Technical Skills_: Light development in JavaScript, C++, jQuery, SQL, HTML/CSS
 
+### Colton: 
+* _Interest_: Coffee enthusiast, visits many coffee shops and local roasters
+* _Soft Skills_: Project management, writing documentation, meeting with clients
+* _Technical Skills_: Strong skills in web development including modern JavaScript and frameworks, HTML/CSS, database systems, web servers, and network communication and protocols.
+
 ## Team approach to problem
 Utilize ReactJS framework to create application/website, backend database to store information about roasters and shops, host application using a cloud-based service

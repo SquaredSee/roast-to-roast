@@ -1,0 +1,27 @@
+{
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-native/all"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "react-native/react-native": true
+  },
+  "rules": {
+    "semi": 2,
+    "no-unused-vars": 1,
+    "react-native/no-color-literals": 1,
+    "react-native/sort-styles": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "app"
+        },
+        {
+            "path": "server"
+        }
+    ],
+    "settings": {},
+    "extensions": {
+        "recommendations": [
+            "dbaeumer.vscode-eslint",
+            "msjsdiag.vscode-react-native",
+            "editorconfig.editorconfig"
+        ]
+    }
+}

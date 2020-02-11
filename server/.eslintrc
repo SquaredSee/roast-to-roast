@@ -13,6 +13,7 @@
   "rules": {
     "semi": 2,
     "prefer-arrow-callback": 2,
+    "no-var": 2,
     "arrow-spacing": 1,
     "arrow-parens": 1,
     "brace-style": [ 1, "stroustrup"],

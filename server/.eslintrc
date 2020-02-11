@@ -1,0 +1,23 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "semi": 2,
+    "prefer-arrow-callback": 2,
+    "arrow-spacing": 1,
+    "arrow-parens": 1,
+    "brace-style": [ 1, "stroustrup"],
+    "prefer-const": 1,
+    "quotes": [1, "single"],
+    "no-unused-vars": 1
+  }
+}

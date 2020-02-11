@@ -20,6 +20,12 @@
   },
   "rules": {
     "semi": 2,
+    "prefer-arrow-callback": 2,
+    "arrow-spacing": 1,
+    "arrow-parens": 1,
+    "brace-style": [ 1, "stroustrup"],
+    "prefer-const": 1,
+    "quotes": [1, "single"],
     "no-unused-vars": 1,
     "react-native/no-color-literals": 1,
     "react-native/sort-styles": 1

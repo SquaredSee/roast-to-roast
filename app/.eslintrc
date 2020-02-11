@@ -26,7 +26,7 @@
     "brace-style": [ 1, "stroustrup"],
     "prefer-const": 1,
     "quotes": [1, "single"],
-    "no-unused-vars": 1,
+    "no-unused-vars": [1, { "argsIgnorePattern": "^_" }],
     "react-native/no-color-literals": 1,
     "react-native/sort-styles": 1
   }

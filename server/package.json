@@ -9,14 +9,13 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "knex": "^0.20.9",
     "morgan": "~1.9.1",
-    "pg": "^7.18.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.4"
+    "pg": "^7.18.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
-    "sequelize-cli": "^5.5.1"
+    "sqlite3": "^4.1.1"
   }
 }

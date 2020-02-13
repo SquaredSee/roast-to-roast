@@ -16,9 +16,6 @@ exports.up = function(knex) {
     table.timestamp('updated_at')
       .defaultTo(knex.fn.now())
       .notNullable();
-
-    table.foreign('shop_id')
-      .references('shops.id');
   });
 };
 

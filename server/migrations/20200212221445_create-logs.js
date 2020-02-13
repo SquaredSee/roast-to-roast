@@ -8,6 +8,8 @@ exports.up = function(knex) {
       .notNullable();
     table.text('description')
       .notNullable();
+    table.integer('rating')
+      .unsigned();
     table.integer('shop_id')
       .unsigned();
     table.integer('user_id')

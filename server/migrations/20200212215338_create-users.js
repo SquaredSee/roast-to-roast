@@ -9,7 +9,6 @@ exports.up = function(knex) {
     table.text('email')
       .notNullable();
     table.text('location');
-
     table.timestamp('created_at')
       .defaultTo(knex.fn.now())
       .notNullable();

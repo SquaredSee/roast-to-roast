@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const queries = require('../db/query_users');
+const queries = require('../db/users-queries');
 
 // GET users listing.
 router.get('/', (_req, res, _next) => {

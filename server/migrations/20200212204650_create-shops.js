@@ -10,6 +10,10 @@ exports.up = function(knex) {
       .unsigned();
     table.text('website');
     table.text('description');
+    table.timestamp('created_at')
+      .defaultTo(knex.fn.now());
+    table.timestamp('updated_at')
+      .defaultTo(knex.fn.now());
 
     table.foreign('roaster_id')
       .references('shops.id');

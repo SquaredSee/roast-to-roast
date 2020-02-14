@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. */
+const queries = require('../db/users-queries');
+
+// GET users listing.
 router.get('/', (_req, res, _next) => {
-  res.send('respond with a resource');
+  queries.getAll().then((users) => {
+    res.json(users);
+  });
 });
 
 module.exports = router;

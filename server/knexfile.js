@@ -1,4 +1,5 @@
-// Update with your config settings.
+// Read config here so migration cli works
+require('dotenv').config();
 
 module.exports = {
 
@@ -9,36 +10,14 @@ module.exports = {
     }
   },
 
-  staging: {
+  testing: {
     client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+    connection: process.env.DB_CONNECTION_STRING
   },
 
   production: {
     client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+    connection: process.env.DB_CONNECTION_STRING
   }
 
 };

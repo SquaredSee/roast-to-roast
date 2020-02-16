@@ -1,0 +1,10 @@
+# Label definitions for .github/workflows/label.yml
+
+app:
+  - app/**/*
+
+server:
+  - server/**/*
+
+devops:
+- .github/**/*

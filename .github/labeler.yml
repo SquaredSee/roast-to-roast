@@ -5,3 +5,6 @@ app:
 
 server:
   - server/**/*
+
+devops:
+- .github/**/*

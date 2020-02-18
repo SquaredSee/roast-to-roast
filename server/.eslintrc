@@ -17,6 +17,8 @@
     "arrow-spacing": 1,
     "arrow-parens": 1,
     "brace-style": [1, "stroustrup"],
+    // "object-curly-spacing": [1, "always"],
+    "no-template-curly-in-string": 1,
     "prefer-const": 1,
     "quotes": [1, "single"],
     "no-unused-vars": [1, { "argsIgnorePattern": "^_" }]

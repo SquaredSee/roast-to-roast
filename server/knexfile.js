@@ -11,8 +11,10 @@ module.exports = {
   },
 
   testing: {
-    client: 'postgresql',
-    connection: process.env.DB_CONNECTION_STRING
+    client: 'sqlite3',
+    connection: {
+      filename: './test.sqlite3'
+    }
   },
 
   production: {

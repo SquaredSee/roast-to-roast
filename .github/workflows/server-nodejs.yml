@@ -28,3 +28,4 @@ jobs:
     #   working-directory: ./server
       env:
         CI: true
+        NODE_ENV: testing

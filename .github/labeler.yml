@@ -7,4 +7,4 @@ server:
   - server/**/*
 
 devops:
-- .github/**/*
+  - .github/**/*

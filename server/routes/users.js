@@ -17,7 +17,7 @@ router.get('/a', (_req, res, _next) => {
 });
 
 router.get('/b', (_req, res, _next) => {
-  users.whereName('Doe').then((users) => {
+  users.whereFullName('John', 'Doe').then((users) => {
     res.json(users);
   });
 });

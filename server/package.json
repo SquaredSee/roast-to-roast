@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "dev": "nodemon",
     "lint": "eslint ./",
-    "test": "jest"
+    "test": "rm -f test.sqlite3 && jest",
+    "test:watch": "rm -f test.sqlite3 && jest --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

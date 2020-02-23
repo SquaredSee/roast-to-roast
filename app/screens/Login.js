@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground} from 'react-native';
+import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Alert, TouchableWithoutFeedback} from 'react-native';
 import Colors from '../constants/Colors';
 
 
@@ -9,6 +9,9 @@ export default function LoginScreen() {
       source={require('../assets/images/background-mandy.png')}
       style={[{width: '100%', height: '100%'}, styles.screen]}
       >
+    <TouchableWithoutFeedback onPress={() => alert('Pressed!')}>
+      <ImageBackground />
+    </TouchableWithoutFeedback>
       <View style={ styles.container }>
         <Image
           style={ styles.backgroundImage }
@@ -54,7 +57,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignItems: 'center',
-    height: 200,
+    height: 225,
   },
 
   screen: {
@@ -70,8 +73,8 @@ const styles = StyleSheet.create({
 
 
   login: {
-    borderColor: 'black',
-    borderWidth: 2,
+    borderColor: Colors.black,
+    borderWidth: 1.5,
     paddingLeft: 50,
     paddingRight: 50,
     paddingTop: 50,
@@ -83,14 +86,18 @@ const styles = StyleSheet.create({
 
   emailInput: {
     borderBottomWidth: 1,
-    borderBottomColor:'black',
-    fontSize: 18
+    borderBottomColor: Colors.black,
+    fontSize: 28,
+    fontFamily: 'knockout46',
+    letterSpacing: 2
   },
 
   passwordInput: {
     paddingTop:20,
     borderBottomWidth:1,
-    borderBottomColor:'black',
-    fontSize: 18
+    borderBottomColor: Colors.black,
+    fontSize: 28,
+    fontFamily: 'knockout46',
+    letterSpacing: 2
   }
 });

@@ -56,18 +56,13 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
-    width: '80%',
-    marginLeft: '10%',
-    height: 100,
-    backgroundColor: 'blue'
+    height: 200
   },
 
   screen: {
     flex: 1,
-    // width: '100%',
-    // height: '100%',
-    backgroundColor: 'red'
+    width: '80%',
+    marginLeft: '10%',
   },
 
   emailInput: {

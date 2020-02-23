@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
@@ -8,8 +8,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ViewComponent,
 } from 'react-native';
 
+import TestExpandableField from './components/TestExpandableField'
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
@@ -40,7 +42,7 @@ export default function HomeScreen() {
           </View>
 
           <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
+            Test
           </Text>
         </View>
 
@@ -48,23 +50,17 @@ export default function HomeScreen() {
           <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
             <Text style={styles.helpLinkText}>
               Help, it didn’t automatically reload!
+              This is a test!
             </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
 
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
+      <View style={style.container}>
+          <TestExpandableField />
       </View>
+
+
     </View>
   );
 }

@@ -1,29 +1,22 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet} from 'react-native';
+import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground} from 'react-native';
 import Colors from '../constants/Colors';
 
 
 export default function LoginScreen() {
   return(
-    <View style={styles.screen}>
+    <ImageBackground
+      source={require('../assets/images/background-mandy.png')}
+      style={[{width: '100%', height: '100%'}, styles.screen]}
+      >
       <View style={ styles.container }>
         <Image
-          style={{ flex: 1 }}
+          style={ styles.backgroundImage }
           resizeMode="contain"
-          source={require('../assets/images/logo-mandy.png')} />
+          source={require('../assets/images/logo-spanishWhite.png')} />
       </View>
 
-      <View style={{
-        borderColor: 'black',
-        borderWidth: 2,
-        paddingLeft: 50,
-        paddingRight: 50,
-        paddingTop: 50,
-        paddingBottom: 30,
-        overflow: 'hidden',
-        borderRadius: 50,
-        backgroundColor: Colors.santeFe
-      }}>
+      <View style={[styles.login, styles.center_col]}>
 
         <View>
           <View style={{ paddingBottom: 20 }}>
@@ -49,20 +42,43 @@ export default function LoginScreen() {
             />
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  center_col: {
+    width: '80%',
+    marginLeft: '10%'
+  },
+
   container: {
     alignItems: 'center',
-    height: 200
+    height: 200,
   },
 
   screen: {
     flex: 1,
-    width: '80%',
-    marginLeft: '10%',
+    width: '100%',
+    height: '100%'
+  },
+
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+
+
+  login: {
+    borderColor: 'black',
+    borderWidth: 2,
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingTop: 50,
+    paddingBottom: 30,
+    overflow: 'hidden',
+    borderRadius: 50,
+    backgroundColor: Colors.santeFe,
   },
 
   emailInput: {

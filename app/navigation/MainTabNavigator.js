@@ -6,8 +6,9 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 //import HomeScreen from '../screens/HomeScreen';
 import Login from '../screens/Login';
+import Brew from '../screens/Brew';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+//import SettingsScreen from '../screens/SettingsScreen';
 
 
 const config = Platform.select({
@@ -56,7 +57,7 @@ LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: Brew,
   },
   config
 );

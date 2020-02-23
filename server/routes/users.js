@@ -19,7 +19,7 @@ router.get('/', (_req, res, _next) => {
 });
 
 router.get('/:id', isValidId, (req, res, next) => {
-  users.whereId(req.params.id).first().then((id) => {
+  users.whereId(req.params.id).then((id) => {
     if (id) {
       res.json(id);
     }

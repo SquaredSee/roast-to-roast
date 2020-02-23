@@ -6,6 +6,9 @@ module.exports = {
   all: () => knex('users')
     .select(cols),
 
+  create: (user) => knex('users')
+    .insert(user, '*'),
+
   whereId: (id) => knex('users').where({id: id}).first()
     .select(cols),
 

@@ -16,5 +16,12 @@ module.exports = {
       email: 'jane.doe@rtr.com',
       location: '22 Jump St.'
     }
-  ]
+  ],
+  new: {
+    email: 'test@test.test',
+    first_name: 'test',
+    last_name: 'test',
+    location: 'test st.',
+    username: 'test'
+  },
 };

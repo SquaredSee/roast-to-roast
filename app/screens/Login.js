@@ -8,31 +8,31 @@ export default function LoginScreen() {
     <View style={styles.screen}>
       <View style={ styles.container }>
         <Image
-          style={{ width:null, height:null, resizeMode:'contain'}}
+          style={{ flex: 1 }}
+          resizeMode="contain"
           source={require('../assets/images/logo-mandy.png')} />
-        </View>
+      </View>
 
-        <View style={{
-          borderColor: 'black',
-          borderWidth: 2,
-          paddingLeft: 50,
-          paddingRight: 50,
-          paddingTop: 50,
-          paddingBottom: 30,
-          overflow: 'hidden',
-          borderRadius: 50,
-          backgroundColor: Colors.santeFe
-        }}>
+      <View style={{
+        borderColor: 'black',
+        borderWidth: 2,
+        paddingLeft: 50,
+        paddingRight: 50,
+        paddingTop: 50,
+        paddingBottom: 30,
+        overflow: 'hidden',
+        borderRadius: 50,
+        backgroundColor: Colors.santeFe
+      }}>
 
-          <View>
-            <View style={{ paddingBottom: 20 }}>
+        <View>
+          <View style={{ paddingBottom: 20 }}>
             <TextInput
               style={styles.emailInput}
               placeholder='Email'
               textContentType= 'username'
               placeholderTextColor= '#D3D3D3'
             />
-
             <TextInput
               style={styles.passwordInput}
               placeholder='Password'
@@ -40,45 +40,46 @@ export default function LoginScreen() {
               secureTextEntry={true}
               placeholderTextColor= '#D3D3D3'
             />
-
-            </View>
-          </View>
-          <View>
-            <Button
-              title='Login'
-              color={Colors.spanishWhite}
-              />
           </View>
         </View>
+        <View>
+          <Button
+            title='Login'
+            color={Colors.spanishWhite}
+            />
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-container: {
-  alignItems: 'center',
-  flex: 1,
-  width: 300,
-  height: 300
-
+  container: {
+    alignItems: 'center',
+    flex: 1,
+    width: '80%',
+    marginLeft: '10%',
+    height: 100,
+    backgroundColor: 'blue'
   },
 
-screen: {
-  top: 100,
-  justifyContent: 'center',
-  margin: 50
-},
+  screen: {
+    flex: 1,
+    // width: '100%',
+    // height: '100%',
+    backgroundColor: 'red'
+  },
 
-emailInput: {
-  borderBottomWidth: 1,
-  borderBottomColor:'black',
-  fontSize: 18
-},
+  emailInput: {
+    borderBottomWidth: 1,
+    borderBottomColor:'black',
+    fontSize: 18
+  },
 
-passwordInput: {
-  paddingTop:20,
-  borderBottomWidth:1,
-  borderBottomColor:'black',
-  fontSize: 18
-}
+  passwordInput: {
+    paddingTop:20,
+    borderBottomWidth:1,
+    borderBottomColor:'black',
+    fontSize: 18
+  }
 });

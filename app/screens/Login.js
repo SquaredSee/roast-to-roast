@@ -9,9 +9,6 @@ export default function LoginScreen() {
       source={require('../assets/images/background-mandy.png')}
       style={[{width: '100%', height: '100%'}, styles.screen]}
       >
-    <TouchableWithoutFeedback onPress={() => alert('Pressed!')}>
-      <ImageBackground />
-    </TouchableWithoutFeedback>
       <View style={ styles.container }>
         <Image
           style={ styles.backgroundImage }

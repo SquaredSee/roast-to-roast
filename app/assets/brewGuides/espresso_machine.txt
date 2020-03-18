@@ -1,4 +1,5 @@
-1. Remove the portafilter. Wipe it clean and dry out the basket. Zero out the scale and grind about 19.5g of coffee to the consistency of confectioner’s sugar directly into the portafilter. Tap it once or twice to settle it and distribute the coffee evenly with your finger. Tamp the portafilter until it feels like the coffee is pushing back. Make sure your coffee bed is level.
-2. Prep the machine by purging water through the grouphead to make sure everything is hot, then lock the portafilter into place.
-3. Pull the shot by engaging the grouphead and start the timer. Place a cup under portafilter and watch the espresso for a steady stream that should look like little mouse tails. The entire extraction should take about 23-28 seconds to brew about 1.5 ounces of espresso. If it takes too much longer or is pulling too slowly, try a coarser grind. If it brews too quickly, try a finer grind.
-4. Serve and enjoy
+Directions:
+{'\n\n'}1. Remove the portafilter. Wipe it clean and dry out the basket. Zero out the scale and grind about 19.5g of coffee to the consistency of confectioner’s sugar directly into the portafilter. Tap it once or twice to settle it and distribute the coffee evenly with your finger. Tamp the portafilter until it feels like the coffee is pushing back. Make sure your coffee bed is level.
+{'\n\n'}2. Prep the machine by purging water through the grouphead to make sure everything is hot, then lock the portafilter into place.
+{'\n\n'}3. Pull the shot by engaging the grouphead and start the timer. Place a cup under portafilter and watch the espresso for a steady stream that should look like little mouse tails. The entire extraction should take about 23-28 seconds to brew about 1.5 ounces of espresso. If it takes too much longer or is pulling too slowly, try a coarser grind. If it brews too quickly, try a finer grind.
+{'\n\n'}4. Serve and enjoy

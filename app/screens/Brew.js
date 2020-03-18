@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     color: Colors.spanishWhite,
     padding: 5,
     backgroundColor: Colors.santeFe,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
 
   sub_Category_Body: {

@@ -40,6 +40,7 @@ async function loadResourcesAsync() {
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+      'knockout-46': require('./assets/fonts/Knockout-46.otf')
     }),
   ]);
 }

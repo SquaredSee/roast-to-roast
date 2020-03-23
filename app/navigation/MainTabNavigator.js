@@ -8,6 +8,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import Login from '../screens/Login';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import Taste from '../screens/Taste';
 
 
 const config = Platform.select({
@@ -38,7 +39,7 @@ HomeStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: Taste,
   },
   config
 );

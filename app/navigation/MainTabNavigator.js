@@ -3,12 +3,14 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
+import { faMapMarkerAlt, faCoffee, faTint } from '@fortawesome/free-solid-svg-icons';
+
 import TabBarIcon from '../components/TabBarIcon';
 //import HomeScreen from '../screens/HomeScreen';
 import Login from '../screens/Login';
+import Brew from '../screens/Brew';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-
+//import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -25,12 +27,7 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Taste',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+    <TabBarIcon icon={faCoffee} />
   ),
 };
 
@@ -46,9 +43,7 @@ const LinksStack = createStackNavigator(
 LinksStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-    focused={focused}
-    name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon icon={faMapMarkerAlt} />
   ),
 };
 
@@ -56,7 +51,7 @@ LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: Brew,
   },
   config
 );
@@ -64,9 +59,7 @@ const SettingsStack = createStackNavigator(
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Brew',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-    focused={focused}
-    name={Platform.OS === 'ios' ? 'ios-k' : 'md-options'} />
+    <TabBarIcon icon={faTint} />
   ),
 };
 

@@ -3,13 +3,13 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+
 export default function TabBarIcon(props) {
   return (
-    <Ionicons
-      name={props.name}
+    <FontAwesomeIcon
+      icon={props.icon}
       size={26}
-      style={{ marginBottom: -3 }}
-      color={props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
     />
   );
 }

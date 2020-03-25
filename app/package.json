@@ -15,6 +15,9 @@
   "dependencies": {
     "@expo/samples": "~36.0.0",
     "@expo/vector-icons": "~10.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-native-fontawesome": "^0.2.3",
     "@react-navigation/web": "~1.0.0-alpha.9",
     "expo": "~36.0.0",
     "expo-asset": "~8.0.0",
@@ -27,6 +30,7 @@
     "react-native-gesture-handler": "~1.5.0",
     "react-native-reanimated": "~1.4.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-svg": "^9.13.3",
     "react-native-web": "~0.11.7",
     "react-navigation": "~4.0.10",
     "react-navigation-stack": "~1.10.3",

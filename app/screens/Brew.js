@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 import { LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+
 import Colors from '../constants/Colors';
 
 class Expandable_ListView extends Component {
@@ -48,10 +52,7 @@ class Expandable_ListView extends Component {
 
           <Text style={styles.category_Text}>{this.props.item.category_Name} </Text>
 
-          <Image
-            source= {require('../assets/icons/arrowDown.png')}
-            style={styles.iconStyle} />
-
+          <FontAwesomeIcon icon={ faSortDown } style={styles.iconStyle} />
         </TouchableOpacity>
 
         <View style={{ height: this.state.layout_Height, overflow: 'hidden' }}>
@@ -264,8 +265,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     right: 15,
-    tintColor: Colors.spanishWhite,
-
+    color: Colors.spanishWhite,
   },
 
   sub_Category_Text: {

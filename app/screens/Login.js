@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground} from 'react-native';
+import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Alert, TouchableWithoutFeedback} from 'react-native';
 import Colors from '../constants/Colors';
 
 
@@ -46,6 +46,10 @@ export default function LoginScreen() {
   );
 }
 
+LoginScreen.navigationOptions = {
+  header: null
+};
+
 const styles = StyleSheet.create({
   center_col: {
     width: '80%',
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
 
   container: {
     alignItems: 'center',
-    height: 200,
+    height: 225,
   },
 
   screen: {
@@ -70,8 +74,8 @@ const styles = StyleSheet.create({
 
 
   login: {
-    borderColor: 'black',
-    borderWidth: 2,
+    borderColor: Colors.black,
+    borderWidth: 1.5,
     paddingLeft: 50,
     paddingRight: 50,
     paddingTop: 50,
@@ -83,14 +87,18 @@ const styles = StyleSheet.create({
 
   emailInput: {
     borderBottomWidth: 1,
-    borderBottomColor:'black',
-    fontSize: 18
+    borderBottomColor: Colors.black,
+    fontSize: 28,
+    fontFamily: 'knockout46',
+    letterSpacing: 2
   },
 
   passwordInput: {
     paddingTop:20,
     borderBottomWidth:1,
-    borderBottomColor:'black',
-    fontSize: 18
+    borderBottomColor: Colors.black,
+    fontSize: 28,
+    fontFamily: 'knockout46',
+    letterSpacing: 2
   }
 });

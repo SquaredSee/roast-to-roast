@@ -46,6 +46,10 @@ export default function LoginScreen() {
   );
 }
 
+LoginScreen.navigationOptions = {
+  header: null
+};
+
 const styles = StyleSheet.create({
   center_col: {
     width: '80%',

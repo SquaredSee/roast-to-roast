@@ -16,7 +16,7 @@ class Expandable_ListView extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.item.expanded) {
       this.setState(() => {
         return {

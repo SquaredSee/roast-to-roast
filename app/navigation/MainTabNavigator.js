@@ -9,6 +9,7 @@ import TabBarIcon from '../components/TabBarIcon';
 //import HomeScreen from '../screens/HomeScreen';
 import Login from '../screens/Login';
 import Brew from '../screens/Brew';
+import NewTaste from '../screens/NewTaste';
 import LinksScreen from '../screens/LinksScreen';
 //import SettingsScreen from '../screens/SettingsScreen';
 
@@ -52,6 +53,7 @@ LinksStack.path = '';
 const SettingsStack = createStackNavigator(
   {
     Settings: Brew,
+    NewTaste: NewTaste
   },
   config
 );

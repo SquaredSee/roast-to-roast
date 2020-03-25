@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
+import { Button, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
@@ -235,6 +235,11 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.MainContainer}>
+
+        <Button
+          title="Go to NewTaste"
+          onPress={() => this.props.navigation.navigate('NewTaste')}
+        />
 
         <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 5 }}>
           {

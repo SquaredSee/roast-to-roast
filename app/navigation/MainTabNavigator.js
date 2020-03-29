@@ -6,17 +6,32 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { faMapMarkerAlt, faCoffee, faTint } from '@fortawesome/free-solid-svg-icons';
 
 import TabBarIcon from '../components/TabBarIcon';
-//import HomeScreen from '../screens/HomeScreen';
 import Login from '../screens/Login';
 import Brew from '../screens/Brew';
 import NewTaste from '../screens/NewTaste';
-import LinksScreen from '../screens/LinksScreen';
-//import SettingsScreen from '../screens/SettingsScreen';
+import Taste from '../screens/Taste';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
+
+const TasteStack = createStackNavigator(
+  {
+    Taste: Taste,
+    NewTaste: NewTaste
+  },
+  config
+);
+
+TasteStack.navigationOptions = {
+  tabBarLabel: 'Taste',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon icon={faCoffee} />
+  ),
+};
+
+TasteStack.path = '';
 
 const HomeStack = createStackNavigator(
   {
@@ -26,51 +41,35 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Taste',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon icon={faCoffee} />
-  ),
-};
-
-HomeStack.path = '';
-
-const LinksStack = createStackNavigator(
-  {
-    Links: LinksScreen,
-  },
-  config
-);
-
-LinksStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon icon={faMapMarkerAlt} />
   ),
 };
 
-LinksStack.path = '';
+HomeStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const BrewStack = createStackNavigator(
   {
-    Settings: Brew,
-    NewTaste: NewTaste
+    Brew: Brew,
+
   },
   config
 );
 
-SettingsStack.navigationOptions = {
+BrewStack.navigationOptions = {
   tabBarLabel: 'Brew',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon icon={faTint} />
   ),
 };
 
-SettingsStack.path = '';
+BrewStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  TasteStack,
+  BrewStack,
 });
 
 tabNavigator.path = '';

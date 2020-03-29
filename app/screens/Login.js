@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Alert, TouchableWithoutFeedback} from 'react-native';
+import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Keyboard, TouchableWithoutFeedback} from 'react-native';
 import Colors from '../constants/Colors';
 
 
@@ -7,7 +7,7 @@ export default function LoginScreen() {
   return(
     <ImageBackground
       source={require('../assets/images/background-mandy.png')}
-      style={[{width: '100%', height: '100%'}, styles.screen]}
+      style={styles.screen}
       >
       <View style={ styles.container }>
         <Image
@@ -16,8 +16,7 @@ export default function LoginScreen() {
           source={require('../assets/images/logo-spanishWhite.png')} />
       </View>
 
-      <View style={[styles.login, styles.center_col]}>
-
+      <View style={[styles.login, styles.center_col]} >
         <View>
           <View style={{ paddingBottom: 20 }}>
             <TextInput
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     width: '100%',
-    height: '100%'
+    height: '100%',
   },
 
   backgroundImage: {

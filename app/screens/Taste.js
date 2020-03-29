@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Touchab} from 'react-native';
+import {View, Text, Image, Button, StyleSheet} from 'react-native';
 import Colors from '../constants/Colors';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function tasteNotes(){
+export default function tasteNotes(props){
   return(
     <View style={styles.container}>
       <View style={styles.create_button_container}>
-        <Text style={{ paddingRight:5 ,fontFamily: 'knockout-46', fontSize:20, letterSpacing:1, textAlign:'center' }}>Add New</Text>
-        <TouchableHighlight>
+        <Text style={{ paddingRight:5 ,fontFamily: 'knockout46', fontSize:20, letterSpacing:1, textAlign:'center' }}>Add New</Text>
+        <TouchableOpacity onPress={() => props.navigation.navigate('NewTaste')}>
           <Image source={require('../assets/icons/plusButton.png')} style={{width: 40, height: 40}}></Image>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
       <View style={styles.note_list_container}>
         <Text>Testing</Text>

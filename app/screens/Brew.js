@@ -236,10 +236,6 @@ export default class App extends Component {
     return (
       <View style={styles.MainContainer}>
 
-        <Button
-          title="Go to NewTaste"
-          onPress={() => this.props.navigation.navigate('NewTaste')}
-        />
 
         <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 5 }}>
           {
@@ -307,9 +303,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.santeFe
   },
 
-  Btn: {
-    padding: 10,
-    backgroundColor: '#FF6F00'
-  }
 
 });

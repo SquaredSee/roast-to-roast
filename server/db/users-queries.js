@@ -9,7 +9,12 @@ module.exports = {
   create: (user) => knex('users')
     .insert(user, '*'),
 
-  whereId: (id) => knex('users').where({id: id}).first()
+  update: (id, user) => knex('users')
+    .where('id', id)
+    .update(user, '*')
+    .select(cols),
+
+  whereId: (id) => knex('users').where('id', id).first()
     .select(cols),
 
   whereUsername: (uname) => knex('users').where({username: uname})

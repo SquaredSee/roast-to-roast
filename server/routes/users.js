@@ -22,8 +22,8 @@ const isValidUser = (user) => {
 };
 
 router.get('/', (_req, res, _next) => {
-  users.all().then((users) => {
-    res.json(users);
+  users.all().then((u) => {
+    res.json(u);
   });
 });
 
@@ -40,8 +40,19 @@ router.get('/:id', isValidId, (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   if (isValidUser(req.body)) {
-    users.create(req.body).then((users) => {
-      res.json(users[0]);
+    users.create(req.body).then((u) => {
+      res.json(u[0]);
+    });
+  }
+  else {
+    next(new Error('Invalid user'));
+  }
+});
+
+router.put('/:id', isValidId, (req, res, next) => {
+  if (isValidUser(req.body)) {
+    users.update(req.params.id, req.body).then((u) => {
+      res.json(u);
     });
   }
   else {

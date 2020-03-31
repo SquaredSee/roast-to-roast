@@ -29,3 +29,10 @@ test('POST /users creates an entry', async () => {
     .send(users.new);
   expect(res.statusCode).toEqual(200);
 });
+
+
+test('PUT /users/:id updates an entry', async () => {
+  const res = await request.put('/users/2')
+    .send(users.new);
+  expect(res.statusCode).toEqual(200);
+});

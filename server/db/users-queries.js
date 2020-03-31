@@ -14,6 +14,10 @@ module.exports = {
     .update(user, '*')
     .select(cols),
 
+  delete: (id) => knex('users')
+    .where('id', id)
+    .del(),
+
   whereId: (id) => knex('users').where('id', id).first()
     .select(cols),
 

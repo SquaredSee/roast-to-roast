@@ -36,3 +36,8 @@ test('PUT /users/:id updates an entry', async () => {
     .send(users.new);
   expect(res.statusCode).toEqual(200);
 });
+
+test('DELETE /users/:id deletes an entry', async () => {
+  const res = await request.del('/users/2');
+  expect(res.statusCode).toEqual(200);
+});

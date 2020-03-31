@@ -7,7 +7,9 @@
     "dev": "nodemon",
     "lint": "eslint ./",
     "test": "rm -f test.sqlite3 && jest",
-    "test:watch": "rm -f test.sqlite3 && jest --watch"
+    "test:watch": "rm -f test.sqlite3 && jest --watch",
+    "migrate": "npx knex migrate:latest",
+    "seed": "npx knex seed:run"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

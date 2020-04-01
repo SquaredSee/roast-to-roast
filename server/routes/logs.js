@@ -18,7 +18,7 @@ const isValidLog = (log) => {
   const rating = typeof log.rating === 'number' && log.rating > 0 && log.rating < 6;
   const coffee = typeof log.coffee === 'string' && log.coffee.trim() !== '';
   const description = typeof log.description === 'string' && log.description.trim() !== '';
-  return true;
+  return shop_id && user_id && rating && coffee && description;
 };
 
 router.get('/', (_req, res, _next) => {

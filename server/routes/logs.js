@@ -13,6 +13,11 @@ const isValidId = (req, res, next) => {
 };
 
 const isValidLog = (log) => {
+  const shop_id = typeof log.shop_id === 'number' && log.shop_id >= 0;
+  const user_id = typeof log.user_id === 'number' && log.user_id >= 0;
+  const rating = typeof log.rating === 'number' && log.rating > 0 && log.rating < 6;
+  const coffee = typeof log.coffee === 'string' && log.coffee.trim() !== '';
+  const description = typeof log.description === 'string' && log.description.trim() !== '';
   return true;
 };
 

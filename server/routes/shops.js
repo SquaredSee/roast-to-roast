@@ -12,9 +12,12 @@ const isValidId = (req, res, next) => {
   next(new Error('Invalid ID'));
 };
 
-const isValidShop = (user) => {
-  const location = typeof user.location === 'string' && user.location.trim() !== '';
-  return location && true;
+const isValidShop = (shop) => {
+  const name = typeof shop.name === 'string' && shop.name.trim() !== '';
+  const location = typeof shop.location === 'string' && shop.location.trim() !== '';
+  const website = typeof shop.website === 'string' && shop.website.trim() !== '';
+  const description = typeof shop.description === 'string' && shop.description.trim() !== '';
+  return name && location && website && description;
 };
 
 router.get('/', (_req, res, _next) => {

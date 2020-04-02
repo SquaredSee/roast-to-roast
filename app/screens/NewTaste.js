@@ -4,6 +4,7 @@ import Colors from '../constants/Colors';
 
 import t from 'tcomb-form-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { HeaderTitle, HeaderBackButton, headerStyle } from 'react-navigation-stack';
 
 const Form = t.form.Form;
 
@@ -24,7 +25,7 @@ const formStyles = {
     normal: {
       marginBottom: 10,
       backgroundColor: Colors.santeFe,
-      padding: 10
+      padding: 10,
     },
   },
   controlLabel: {
@@ -78,7 +79,7 @@ const options = {
   stylesheet: formStyles,
 };
 
-export default class App extends Component {
+export default class NewTaste extends Component {
   handleSubmit = () => {
     const value = this._form.getValue();
     console.log('value: ', value);
@@ -105,11 +106,36 @@ export default class App extends Component {
   }
 }
 
+NewTaste.navigationOptions = {
+  headerTitle: 'New Taste Log',
+  headerTitleStyle: {
+    fontFamily: 'knockout46',
+    fontSize: 60,
+    alignItems: 'center',
+    color: Colors.spanishWhite
+  },
+  headerStyle: {
+    backgroundColor: Colors.mandy,
+  },
+  headerTitleContainerStyle: {
+    height: 70,
+  },
+  headerBackTitle: 'Cancel',
+  headerBackTitleStyle: {
+    fontFamily: 'knockout46',
+    fontSize: 30,
+    color: Colors.spanishWhite
+  }
+
+
+};
+
 const styles = StyleSheet.create({
 
   container: {
     justifyContent: 'center',
-    paddingTop: 40,
+    paddingTop: 60,
+    paddingBottom: 30,
     padding: 10,
     backgroundColor: Colors.mandy,
   },

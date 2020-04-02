@@ -74,7 +74,7 @@ class Expandable_ListView extends Component {
   }
 }
 
-export default class App extends Component {
+export default class Brew extends Component {
 
   constructor() {
     super();
@@ -250,6 +250,22 @@ export default class App extends Component {
     );
   }
 }
+
+Brew.navigationOptions = {
+  headerTitle: 'Brew',
+  headerTitleStyle: {
+    fontFamily: 'knockout46',
+    fontSize: 60,
+    alignItems: 'center',
+    color: Colors.spanishWhite
+  },
+  headerStyle: {
+    backgroundColor: Colors.mandy,
+  },
+  headerTitleContainerStyle: {
+    height: 70,
+  }
+};
 
 const styles = StyleSheet.create({
 

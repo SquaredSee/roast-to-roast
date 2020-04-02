@@ -10,6 +10,7 @@ import Login from '../screens/Login';
 import Brew from '../screens/Brew';
 import NewTaste from '../screens/NewTaste';
 import Taste from '../screens/Taste';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },

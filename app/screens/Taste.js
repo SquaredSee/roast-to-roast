@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   addNewText: {
     paddingRight: 5,
     fontFamily: 'knockout46',
-    fontSize:20,
+    fontSize:30,
     letterSpacing:1,
     textAlign:'center',
     color: Colors.spanishWhite

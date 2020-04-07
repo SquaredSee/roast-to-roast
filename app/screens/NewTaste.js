@@ -16,7 +16,8 @@ const NewEntry = t.struct({
   tastingNote1: t.String,
   tastingNote2: t.maybe(t.String),
   tastingNote3: t.maybe(t.String),
-  rating: t.Number
+  rating: t.Number,
+  id: t.Number
 });
 
 const formStyles = {
@@ -75,6 +76,7 @@ const options = {
       error: 'Please set a rating of 1-10',
       keyboardType: 'numeric'
     },
+
   },
   stylesheet: formStyles,
 };

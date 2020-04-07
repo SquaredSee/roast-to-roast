@@ -21,16 +21,30 @@ const isValidLog = (log) => {
   return shop_id && user_id && rating && coffee && description;
 };
 
-router.get('/', (_req, res, _next) => {
-  logs.all().then((l) => {
-    res.json(l);
-  });
+router.get('/', (req, res, _next) => {
+  if (req.query.user_id) {
+    logs.whereUserId(req.query.user_id).then((l) => {
+      res.json(l);
+    });
+  }
+  else if (req.query.shop_id) {
+    logs.whereShopId(req.query.shop_id).then((l) => {
+      res.json(l);
+    });
+  }
+  else {
+    logs.all().then((l) => {
+      res.json(l);
+    });
+  }
+
+
 });
 
 router.get('/:id', isValidId, (req, res, next) => {
-  logs.whereId(req.params.id).then((id) => {
-    if (id) {
-      res.json(id);
+  logs.whereId(req.params.id).then((l) => {
+    if (l) {
+      res.json(l);
     }
     else {
       next();

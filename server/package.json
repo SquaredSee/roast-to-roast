@@ -6,7 +6,10 @@
     "start": "node ./bin/www",
     "dev": "nodemon",
     "lint": "eslint ./",
-    "test": "jest"
+    "test": "rm -f test.sqlite3 && jest",
+    "test:watch": "rm -f test.sqlite3 && jest --watch",
+    "migrate": "npx knex migrate:latest",
+    "seed": "npx knex seed:run"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +24,7 @@
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "supertest": "^4.0.2"
   }
 }

@@ -24,8 +24,8 @@ jobs:
       working-directory: ./server
     - run: npm run lint
       working-directory: ./server
-    # - run: npm test
-    #   working-directory: ./server
+    - run: npm test
+      working-directory: ./server
       env:
         CI: true
-        NODE_ENV: testing
+        NODE_ENV: test

@@ -32,6 +32,8 @@
     "react-native/no-raw-text": [2, { "skip":  ["MonoText"] }],
     "react-native/no-single-element-style-arrays": 2,
     "react-native/no-inline-styles": 1,
-    "react-native/no-color-literals": 1
+    "react-native/no-color-literals": 1,
+    "react/display-name": 0,
+    "react/prop-types": 0
   }
 }

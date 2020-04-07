@@ -4,7 +4,6 @@ import Colors from '../constants/Colors';
 
 import t from 'tcomb-form-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { HeaderTitle, HeaderBackButton, headerStyle } from 'react-navigation-stack';
 
 const Form = t.form.Form;
 
@@ -48,7 +47,7 @@ const formStyles = {
       marginBottom: 10
     }
   }
-}
+};
 
 const options = {
   fields: {
@@ -82,7 +81,7 @@ const options = {
 };
 
 export default class NewTaste extends Component {
-  handleSubmit = () => {
+  handleSubmit() {
     const value = this._form.getValue();
     console.log('value: ', value);
   }
@@ -98,7 +97,7 @@ export default class NewTaste extends Component {
             options={options}
           />
           <Button
-            color = {Colors.spanishWhite}
+            color={Colors.spanishWhite}
             title="Save Log"
             onPress={this.handleSubmit}
           />
@@ -144,9 +143,5 @@ const styles = StyleSheet.create({
 
   fieldText: {
     fontFamily: 'knockout46',
-  },
-
-  Btn: {
-    color: Colors.spanishWhite,
   }
 });

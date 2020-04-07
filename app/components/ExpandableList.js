@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
+
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
-export default class Expandable_ListView extends Component {
+import Colors from '../constants/Colors';
+
+export default class ExpandableListView extends Component {
 
   constructor() {
-
     super();
 
     this.state = {
-
-      layout_Height: 0
-
-    }
+      layoutHeight: 0
+    };
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.item.expanded) {
       this.setState(() => {
         return {
-          layout_Height: null
-        }
+          layoutHeight: null
+        };
       });
     }
     else {
       this.setState(() => {
         return {
-          layout_Height: 0
-        }
+          layoutHeight: 0
+        };
       });
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.layout_Height !== nextState.layout_Height) {
+    if (this.state.layoutHeight !== nextState.layoutHeight) {
       return true;
     }
     return false;
@@ -41,30 +43,62 @@ export default class Expandable_ListView extends Component {
 
   render() {
     return (
-      <View style={styles.Panel_Holder}>
+      <View style={styles.panelHolder}>
 
-        <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} style={styles.category_View}>
+        <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} style={styles.categoryView}>
 
-          <Text style={styles.category_Text}>{this.props.item.category_Name} </Text>
+          <Text style={styles.categoryText}>{this.props.item.categoryName} </Text>
 
           <FontAwesomeIcon icon={ faSortDown } style={styles.iconStyle} />
         </TouchableOpacity>
 
-        <View style={{ height: this.state.layout_Height, overflow: 'hidden' }}>
-
+        <View style={{ height: this.state.layoutHeight, overflow: 'hidden' }}>
           {
-            this.props.item.sub_Category.map((item, key) => (
-
-              <View key={key} style={styles.sub_Category_Text} >
-
-                <Text> {item.name} </Text>
-
+            this.props.item.subCategory.map((item, key) => (
+              <View key={key} style={styles.subCategoryText} >
+                <Text>{item.name}</Text>
               </View>
             ))
           }
-
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  iconStyle: {
+    width: 15,
+    height: 10,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    right: 15,
+    color: Colors.spanishWhite,
+  },
+
+  subCategoryText: {
+    fontSize: 15,
+    fontFamily: 'Arial',
+    color: Colors.spanishWhite,
+    padding: 5,
+    backgroundColor: Colors.santeFe,
+    fontWeight: 'bold',
+  },
+
+  categoryText: {
+    textAlign: 'left',
+    color: Colors.spanishWhite,
+    fontSize: 35,
+    fontFamily: 'knockout46',
+    letterSpacing: 1,
+    padding: 10
+  },
+
+  categoryView: {
+    marginVertical: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: Colors.santeFe
+  }
+});

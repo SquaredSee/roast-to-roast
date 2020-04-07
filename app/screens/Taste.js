@@ -1,25 +1,25 @@
 import React from 'react';
-import {View, Text, Image, Button, StyleSheet} from 'react-native';
-import Colors from '../constants/Colors';
+
+import {View, Text, Image, StyleSheet} from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+
+import Colors from '../constants/Colors';
 
 export default function tasteNotes(props){
   return(
     <View style={styles.container}>
-      <View style={styles.create_button_container}>
+      <View style={styles.createButtonContainer}>
         <Text style={ styles.addNewText}>Add New</Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('NewTaste')}>
           <Image source={require('../assets/icons/plusButton.png')} style={{width: 40, height: 40}}></Image>
         </TouchableOpacity>
       </View>
-      <View style={styles.note_list_container}>
+      <View style={styles.noteListContainer}>
         <Text>Your Notes</Text>
         <ScrollView>
           <Text>Testing</Text>
         </ScrollView>
       </View>
-
-
     </View>
   );
 }
@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
     padding: 10
   },
 
-  create_button_container: {
+  createButtonContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent:'flex-end',
     padding: 10,
   },
 
-  note_list_container: {
+  noteListContainer: {
     flex: 4,
     alignItems: 'center',
     justifyContent:'flex-start',
@@ -71,6 +71,4 @@ const styles = StyleSheet.create({
     textAlign:'center',
     color: Colors.spanishWhite
   }
-
-
 });

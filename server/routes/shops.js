@@ -59,7 +59,7 @@ router.put('/:id', isValidId, (req, res, next) => {
   }
 });
 
-router.delete('/:id', isValidId, (req, res, next) => {
+router.delete('/:id', isValidId, (req, res, _next) => {
   shops.delete(req.params.id).then(() => {
     res.json({'deleted': true});
   });

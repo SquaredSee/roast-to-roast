@@ -60,7 +60,7 @@ router.put('/:id', isValidId, (req, res, next) => {
   }
 });
 
-router.delete('/:id', isValidId, (req, res, next) => {
+router.delete('/:id', isValidId, (req, res, _next) => {
   users.delete(req.params.id).then(() => {
     res.json({'deleted': true});
   });

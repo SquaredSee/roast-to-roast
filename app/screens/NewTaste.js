@@ -7,16 +7,15 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const Form = t.form.Form;
 
-const NewEntry = t.struct({
+const LogModel = t.struct({
   date: t.Date,
-  shopName: t.String,
-  coffeeName: t.String,
+  shop_name: t.String,
+  coffee: t.String,
   origin: t.maybe(t.String),
-  tastingNote1: t.String,
-  tastingNote2: t.maybe(t.String),
-  tastingNote3: t.maybe(t.String),
-  rating: t.Number,
-  id: t.Number
+  tasting_note1: t.String,
+  tasting_note2: t.maybe(t.String),
+  tasting_note3: t.maybe(t.String),
+  rating: t.Number
 });
 
 const formStyles = {
@@ -55,20 +54,20 @@ const options = {
       error: 'Please enter a valid date',
       mode: 'date',
     },
-    shopName: {
+    shop_name: {
       error: 'Enter the shop you got the coffee from'
     },
-    coffeeName: {
+    coffee: {
       error: 'Please enter the name of the coffee or drink you tried',
     },
-    tastingNote1: {
+    tasting_note1: {
       label: 'Tasting Note 1',
       error: 'Enter at least one thought or a flavor note about the drink'
     },
-    tastingNote2: {
+    tasting_note2: {
       label: 'Tasting Note 2'
     },
-    tastingNote3: {
+    tasting_note3: {
       label: 'Tasting Note 3'
     },
     rating: {
@@ -81,9 +80,19 @@ const options = {
 };
 
 export default class NewTaste extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { value: null };
+  }
   handleSubmit() {
-    const value = this._form.getValue();
-    console.log('value: ', value);
+    // Send to server
+  }
+
+  handleChange(value) {
+    console.log(this.state);
+    this.setState({ value });
   }
 
   render() {
@@ -92,9 +101,10 @@ export default class NewTaste extends Component {
         <ScrollView keyboardShouldPersistTaps='handled'>
           <Form
             style={styles.fieldText}
-            ref={c => this._form = c}
-            type={NewEntry}
+            type={LogModel}
+            value={this.state.value}
             options={options}
+            onChange={this.handleChange}
           />
           <Button
             color={Colors.spanishWhite}

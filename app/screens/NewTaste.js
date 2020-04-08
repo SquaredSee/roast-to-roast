@@ -84,14 +84,31 @@ export default class NewTaste extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = { value: null };
   }
+
   handleSubmit() {
-    // Send to server
+    // const validate = t.validate(this.state.value, LogModel);
+
+    // TODO: get rid of deprecated ref
+    const formData = this.refs.form.getValue();
+    if (formData) {
+      fetch('192.168.1.4:3000/logs', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...this.state.value,
+          user_id: 1  // TODO: Add authentication?
+        })
+      });
+    }
   }
 
   handleChange(value) {
-    console.log(this.state);
     this.setState({ value });
   }
 
@@ -100,6 +117,7 @@ export default class NewTaste extends Component {
       <View style={styles.container}>
         <ScrollView keyboardShouldPersistTaps='handled'>
           <Form
+            ref='form'
             style={styles.fieldText}
             type={LogModel}
             value={this.state.value}

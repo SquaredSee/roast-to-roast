@@ -2,10 +2,11 @@ const knex = require('./knex');
 
 const cols = ['logs.id', 'logs.rating', 'logs.coffee', 'logs.description'];
 
-const update_cols = ['logs.shop_id', 'logs.user_id', ...cols];
+// const update_cols = ['logs.shop_id', 'logs.user_id', ...cols];
+const update_cols = ['logs.user_id', ...cols];
 
 const join_cols = [
-  'shops.name as shop_name',
+  // 'shops.name as shop_name',
   'users.first_name as user_first',
   'users.last_name as user_last',
   ...cols
@@ -13,7 +14,7 @@ const join_cols = [
 
 module.exports = {
   all: () => knex('logs')
-    .join('shops', 'logs.shop_id', 'shops.id')
+    // .join('shops', 'logs.shop_id', 'shops.id')
     .join('users', 'logs.user_id', 'users.id')
     .select(join_cols),
 
@@ -30,17 +31,17 @@ module.exports = {
     .del(),
 
   whereId: (id) => knex('logs').where('id', id).first()
-    .join('shops', 'logs.shop_id', 'shops.id')
+    // .join('shops', 'logs.shop_id', 'shops.id')
     .join('users', 'logs.user_id', 'users.id')
     .select(join_cols),
 
   whereUserId: (user_id) => knex('logs').where('user_id', user_id)
-    .join('shops', 'logs.shop_id', 'shops.id')
+    // .join('shops', 'logs.shop_id', 'shops.id')
     .join('users', 'logs.user_id', 'users.id')
     .select(join_cols),
 
-  whereShopId: (shop_id) => knex('logs').where('shop_id', shop_id)
-    .join('shops', 'logs.shop_id', 'shops.id')
-    .join('users', 'logs.user_id', 'users.id')
-    .select(join_cols)
+  // whereShopId: (shop_id) => knex('logs').where('shop_id', shop_id)
+  //   .join('shops', 'logs.shop_id', 'shops.id')
+  //   .join('users', 'logs.user_id', 'users.id')
+  //   .select(join_cols)
 };

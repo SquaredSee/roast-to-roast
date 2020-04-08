@@ -6,12 +6,19 @@ exports.up = function(knex) {
       .defaultTo(knex.fn.now());
     table.text('coffee')
       .notNullable();
-    table.text('description')
+    table.text('origin');
+    table.text('tasting_note_1')
       .notNullable();
+    table.text('tasting_note_2')
+      .defaultTo('');
+    table.text('tasting_note_3')
+      .defaultTo('');
     table.integer('rating')
       .unsigned();
-    table.integer('shop_id')
-      .unsigned();
+    table.text('shop_name')
+      .notNullable();
+    // table.integer('shop_id')
+    //   .unsigned();
     table.integer('user_id')
       .unsigned()
       .notNullable();
@@ -22,8 +29,8 @@ exports.up = function(knex) {
       .defaultTo(knex.fn.now())
       .notNullable();
 
-    table.foreign('shop_id')
-      .references('shops.id');
+    // table.foreign('shop_id')
+    //   .references('shops.id');
     table.foreign('user_id')
       .references('users.id');
   });

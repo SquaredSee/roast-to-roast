@@ -17,7 +17,7 @@ const isValidLog = (log) => {
   const user_id = typeof log.user_id === 'number' && log.user_id >= 0;
   const rating = typeof log.rating === 'number' && log.rating > 0 && log.rating < 6;
   const coffee = typeof log.coffee === 'string' && log.coffee.trim() !== '';
-  const tasting_note_1 = typeof log.coffee === 'string' && log.tasting_note_1.trim() !== '';
+  const tasting_note_1 = typeof log.tasting_note_1 === 'string' && log.tasting_note_1.trim() !== '';
   return user_id && rating && coffee && tasting_note_1;
 };
 

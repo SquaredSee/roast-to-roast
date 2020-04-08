@@ -12,9 +12,9 @@ const LogModel = t.struct({
   shop_name: t.String,
   coffee: t.String,
   origin: t.maybe(t.String),
-  tasting_note1: t.String,
-  tasting_note2: t.maybe(t.String),
-  tasting_note3: t.maybe(t.String),
+  tasting_note_1: t.String,
+  tasting_note_2: t.maybe(t.String),
+  tasting_note_3: t.maybe(t.String),
   rating: t.Number
 });
 
@@ -94,16 +94,28 @@ export default class NewTaste extends Component {
     // TODO: get rid of deprecated ref
     const formData = this.refs.form.getValue();
     if (formData) {
-      fetch('192.168.1.4:3000/logs', {
+      fetch('http://192.168.1.4:3000/logs', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...this.state.value,
+          ...formData,
           user_id: 1  // TODO: Add authentication?
         })
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          this.props.navigation.navigate('Taste');
+        }
+        else {
+          // ERROR!
+        }
+        console.log(res.status);
+      })
+      .catch((e) => {
+        console.log(e);
       });
     }
   }

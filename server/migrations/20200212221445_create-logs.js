@@ -3,7 +3,8 @@ exports.up = function(knex) {
   return knex.schema.createTable('logs', (table) => {
     table.increments('id');
     table.datetime('date')
-      .defaultTo(knex.fn.now());
+      .defaultTo(knex.fn.now())
+      .notNullable();
     table.text('coffee')
       .notNullable();
     table.text('origin')

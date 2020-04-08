@@ -1,6 +1,15 @@
 const knex = require('./knex');
 
-const cols = ['logs.id', 'logs.rating', 'logs.coffee', 'logs.description'];
+const cols = [
+  'logs.id',
+  'logs.rating',
+  'logs.coffee',
+  'logs.tasting_note_1',
+  'logs.tasting_note_2',
+  'logs.tasting_note_3',
+  'logs.origin',
+  'logs.date'
+];
 
 // const update_cols = ['logs.shop_id', 'logs.user_id', ...cols];
 const update_cols = ['logs.user_id', ...cols];

@@ -8,7 +8,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const Form = t.form.Form;
 
 const LogModel = t.struct({
-  date: t.Date,
+  // date: t.Date,
   shop_name: t.String,
   coffee: t.String,
   origin: t.maybe(t.String),

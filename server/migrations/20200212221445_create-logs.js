@@ -6,7 +6,8 @@ exports.up = function(knex) {
       .defaultTo(knex.fn.now());
     table.text('coffee')
       .notNullable();
-    table.text('origin');
+    table.text('origin')
+      .defaultTo('');
     table.text('tasting_note_1')
       .notNullable();
     table.text('tasting_note_2')

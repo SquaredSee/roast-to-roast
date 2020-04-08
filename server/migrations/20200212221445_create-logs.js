@@ -14,6 +14,7 @@ exports.up = function(knex) {
     table.text('tasting_note_3')
       .defaultTo('');
     table.integer('rating')
+      .notNullable()
       .unsigned();
     table.text('shop_name')
       .notNullable();

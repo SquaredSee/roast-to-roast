@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import {View, Text, Image, StyleSheet, Button} from 'react-native';
+import { LayoutAnimation, View, Text, Image, StyleSheet, Button } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+
+import ExpandableListView from '../components/ExpandableList';
 
 import Colors from '../constants/Colors';
 
@@ -32,13 +34,51 @@ export default class TasteNotes extends Component {
     .then((res) => res.json())
     .then((data) => {
       if (data.length > 0) {
-        this.setState({ logs: data });
+        this.setState({ logs: this.buildLogList(data) });
       }
     })
     .catch((e) => console.error(e));
   }
 
+  buildLogList(data) {
+    return data.map((log) => ({
+      expanded: false,
+      categoryName: log.coffee,
+      subCategory: [
+        { text: <Text style={styles.subCategoryText}>{`${log.date}`}</Text> },
+        { text: <Text style={styles.subCategoryBody}>{`${log.tasting_note_1}`}</Text> }
+      ]
+    }));
+  }
+
+  componentDidMount() {
+    this.getLogs();
+  }
+
+  updateLayout(index) {
+
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    const array = [...this.state.logs];
+
+    array[index].expanded = !array[index].expanded;
+
+    this.setState(() => {
+      return {
+        logs: array
+      };
+    });
+  }
+
   render() {
+    let logList = this.state.logs.map((log, key) => (
+      <ExpandableListView key={log.id} item={log} onClickFunction={this.updateLayout.bind(this, key)} />
+    ));
+
+    if (logList.length === 0) {
+      logList = <Text>No Logs available</Text>;
+    }
+
     return(
       <View style={styles.container}>
         <View style={styles.createButtonContainer}>
@@ -48,10 +88,8 @@ export default class TasteNotes extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.noteListContainer}>
-          <Button onPress={this.getLogs} title="press me ;)" />
-          <Text>Your Notes</Text>
-          <ScrollView>
-            {this.state.logs.map((log) => <Text key={log.id}>{log.coffee}</Text>)}
+          <ScrollView style={{ paddingHorizontal: 10, paddingVertical: 5 }}>
+            {logList}
           </ScrollView>
         </View>
       </View>
@@ -94,8 +132,8 @@ const styles = StyleSheet.create({
 
   noteListContainer: {
     flex: 4,
-    alignItems: 'center',
-    justifyContent:'flex-start',
+    // alignItems: 'center',
+    // justifyContent:'flex-start',
   },
 
   addNewText: {
@@ -105,5 +143,22 @@ const styles = StyleSheet.create({
     letterSpacing:1,
     textAlign:'center',
     color: Colors.spanishWhite
+  },
+
+  subCategoryBody: {
+    fontSize: 13,
+    fontFamily: 'Arial',
+    color: Colors.spanishWhite,
+    padding: 10,
+    backgroundColor: Colors.santeFe,
+  },
+
+  subCategoryText: {
+    fontSize: 15,
+    fontFamily: 'Arial',
+    color: Colors.spanishWhite,
+    padding: 5,
+    backgroundColor: Colors.santeFe,
+    fontWeight: 'bold',
   }
 });

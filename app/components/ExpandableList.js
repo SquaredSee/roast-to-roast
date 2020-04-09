@@ -56,7 +56,7 @@ export default class ExpandableListView extends Component {
           {
             this.props.item.subCategory.map((item, key) => (
               <View key={key} style={styles.subCategoryText} >
-                <Text>{item.name}</Text>
+                <Text>{item.text}</Text>
               </View>
             ))
           }

@@ -1,97 +1,26 @@
 import React, { Component } from 'react';
 
-import { LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, Platform } from 'react-native';
 
 import Colors from '../constants/Colors';
+import ExpandableListView from '../components/ExpandableList';
 
-class Expandable_ListView extends Component {
-
-  constructor() {
-
-    super();
-
-    this.state = {
-
-      layout_Height: 0
-
-    }
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.item.expanded) {
-      this.setState(() => {
-        return {
-          layout_Height: null
-        }
-      });
-    }
-    else {
-      this.setState(() => {
-        return {
-          layout_Height: 0
-        }
-      });
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.layout_Height !== nextState.layout_Height) {
-      return true;
-    }
-    return false;
-  }
-
-  render() {
-    return (
-      <View style={styles.Panel_Holder}>
-
-        <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} style={styles.category_View}>
-
-          <Text style={styles.category_Text}>{this.props.item.category_Name} </Text>
-
-          <FontAwesomeIcon icon={ faSortDown } style={styles.iconStyle} />
-        </TouchableOpacity>
-
-        <View style={{ height: this.state.layout_Height, overflow: 'hidden' }}>
-
-          {
-            this.props.item.sub_Category.map((item, key) => (
-
-              <View key={key} style={styles.sub_Category_Text} >
-
-                <Text> {item.name} </Text>
-
-              </View>
-            ))
-          }
-
-        </View>
-      </View>
-    );
-  }
-}
-
-export default class App extends Component {
+export default class Brew extends Component {
 
   constructor() {
     super();
 
     if (Platform.OS === 'android') {
-
-      UIManager.setLayoutAnimationEnabledExperimental(true)
-
+      UIManager.setLayoutAnimationEnabledExperimental(true);
     }
 
     const array = [
 
       { //FRENCH PRESS
-        expanded: false, category_Name: 'French Press', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~5 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text> },
-          {id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'French Press', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~5 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text> },
+          {id: 3, name: <Text style={styles.subCategoryBody}>
             1. Warm up your empty French Press by rinsing it with very hot water. This helps maintain the temperature while brewing for best extraction.
             {'\n\n'}2. Measure out 56g (about 8 Tablespoons) of coffee and grind it as coarse as breadcrumbs.
             {'\n\n'}3. Now that your French Press is warmed up, discard the hot water and add coffee into the empty press. Start your count-up timer as soon as you add hot water. Fill it up halfway to the top saturating all the grounds, making sure that there are no dry spots.
@@ -102,10 +31,10 @@ export default class App extends Component {
           </Text>}]
       },
       { //CHEMEX
-        expanded: false, category_Name: 'Chemex', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~4 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          {id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Chemex', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~4 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          {id: 3, name: <Text style={styles.subCategoryBody}>
             1. Place the Chemex Filter in the brewer with single fold away from the spout and multiple folds lined up against the spout. Rinse the filter with hot water to get a nice even seal all the way around. This preheats the brewer and gets rid of any paper flavor from the filter. Dump the rinse water and fold the filter toward the spout to reinforce this area.
             {'\n\n'}2. Add 42g or about 6 Tablespoons of coffee ground kind of like Kosher salt. Center the coffee in your brewer and zero out the scale.
             {'\n\n'}. Start the timer when you add the hot water. Pour until all the grounds are saturated or until you reach about 150g. Stir with a chopstick or spoon to make sure there are no dry clumps.
@@ -116,10 +45,10 @@ export default class App extends Component {
           </Text> }]
       },
       { //AEROPRESS
-        expanded: false, category_Name: 'AeroPress', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~5 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'AeroPress', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~5 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Measure and grind 17g of coffee — one rounded AeroPress spoonful or about 2 ½ Tablespoons. Grind the coffee about as fine as table salt.
             {'\n\n'}2. Get the AeroPress ready to brew by placing the filter in the basket. Next, preheat the brewer and rinse the filter with hot water. This gets rid of any paper flavor and warms everything up. Heat up your mug with hot water while you’re at it.
             {'\n\n'}3. Discard the rinse water from your mug. Affix the basket to the bottom of the brew chamber and place it on top of the mug. If it’s handy, use the funnel (or coffee loader) that comes with the AeroPress to add 17g of coffee. Then, remove the funnel.
@@ -130,22 +59,22 @@ export default class App extends Component {
           </Text> }]
       },
       { //HARIO V60
-        expanded: false, category_Name: 'Hario V60', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~4 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Hario V60', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~4 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Fold the filter into a cone shape and rinse it in the Hario dripper with water just off the boil (about 205°F) to eliminate paper flavor and to heat up the mug or carafe you are brewing into. Discard the rinse water.
             {'\n\n'}2. Grind 21 grams (about 3 Tablespoons) of coffee to be about as fine as kosher salt. Add coffee to your brewer.
             {'\n\n'}3. Saturate the grounds with water right off the boil (about 205°F). Use just enough water to cover the grounds. Let it bloom for 15 seconds. Coffee de-gasses or “blooms” when it’s fresh–the coffee bed should raise up and bubble a bit.
-            {'\n\n'}4. Pour water in a slow, even spiral, adding water every 10 – 15 seconds for an even extraction. Pour over the dark spots and avoid the light ones. If you're using a scale, you should pour until you reach 360 g.
+            {'\n\n'}4. Pour water in a slow, even spiral, adding water every 10 – 15 seconds for an even extraction. Pour over the dark spots and avoid the light ones. If you&apos;re using a scale, you should pour until you reach 360 g.
             {'\n\n'}5. Once you hit 3:00, you should have about 10 oz of brewed coffee. Remove the brewer and pour the coffee into a warm mug.
            </Text>}]
       },
       { //KALITA WAVE
-        expanded: false, category_Name: 'Kalita Wave', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~3 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Kalita Wave', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~3 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Place and rinse the Kalita Wave filter in the dripper. This removes the paper flavor from the filter and warms everything up. Heat up your mug while you’re at it.
             {'\n\n'}2. Discard the rinse water from the carafe or mug and grind 21g (about 3 Tablespoons) of coffee as fine as table salt. Add it to the filter, making sure the bed is completely flat. Place the Kalita Wave on top of a carafe or mug. Tare your scale to zero.
             {'\n\n'}3. Saturate the dry grounds completely with 60g of hot water right off the boil (about 205°F) in the first 10 seconds and allow it to bloom. Coffee degasses or “blooms” when it’s fresh–the coffee bed should rise up and bubble a bit. Give the coffee a stir with a spoon.
@@ -155,10 +84,10 @@ export default class App extends Component {
           </Text>}]
       },
       { //SYPHON
-        expanded: false, category_Name: 'Syphon', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~6 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Syphon', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~6 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Pull the chain of the metal filter attachment down and sink it. The clip attaches at the bottom of the funnel.
             {'\n\n'}2. Use pre-heated water to make things move a lot quicker when brewing. Make sure the outside of the globe is completely dry before you apply heat to prevent it from cracking. Fill the globe to the No. 5 mark.
             {'\n\n'}3. Vac pots usually come with a candle burner, but a butane burner (shown here) is much more effective. Turn the burner on and up high. Loosely place the funnel inside the globe so it sits at an angle while you wait for the water to boil—boil times vary.
@@ -171,23 +100,23 @@ export default class App extends Component {
            </Text>}]
       },
       { //COLD BREW
-        expanded: false, category_Name: 'Cold Brew', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: 8-12 hours</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Cold Brew', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: 8-12 hours</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Use a ratio of 3 ounces (roughly 85 grams)  of coarsely ground coffee to 16 ounces of purified water. For example, if you use a 32oz French Press, you would use 6:32.
             {'\n\n'}2. Combine the coffee and the water together and stir, making sure all grounds are saturated.
             {'\n\n'}3. Let sit at room temperature or in the fridge (recommended) for 12-20 hours.
-            {'\n\n'}4. When you've steeped for your desired time, use a thin coffee filter (like a chemex filter) and strain the coffee into different vessel for serving. Refrigerate the cold brew concentrate.
-            {'\n\n'}5. When you're ready to drink, start off with a 1:1 ratio of water:cold brew. Change as your taste desires.
+            {'\n\n'}4. When you&apos;ve steeped for your desired time, use a thin coffee filter (like a chemex filter) and strain the coffee into different vessel for serving. Refrigerate the cold brew concentrate.
+            {'\n\n'}5. When you&apos;re ready to drink, start off with a 1:1 ratio of water:cold brew. Change as your taste desires.
             {'\n\n'}6. Serve over ice and enjoy!
            </Text>}]
       },
       { // ESPRESSO MACHINE
-        expanded: false, category_Name: 'Espresso Machine', sub_Category: [
-          { id: 1, name: <Text style={styles.sub_Category_Text}>Total Time: ~2 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Espresso Machine', subCategory: [
+          { id: 1, name: <Text style={styles.subCategoryText}>Total Time: ~2 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Remove the portafilter. Wipe it clean and dry out the basket. Zero out the scale and grind about 19.5g of coffee to the consistency of confectioner’s sugar directly into the portafilter. Tap it once or twice to settle it and distribute the coffee evenly with your finger. Tamp the portafilter until it feels like the coffee is pushing back. Make sure your coffee bed is level.
             {'\n\n'}2. Prep the machine by purging water through the grouphead to make sure everything is hot, then lock the portafilter into place.
             {'\n\n'}3. Pull the shot by engaging the grouphead and start the timer. Place a cup under portafilter and watch the espresso for a steady stream that should look like little mouse tails. The entire extraction should take about 23-28 seconds to brew about 1.5 ounces of espresso. If it takes too much longer or is pulling too slowly, try a coarser grind. If it brews too quickly, try a finer grind.
@@ -195,10 +124,10 @@ export default class App extends Component {
            </Text> }]
       },
       { //MOKA POT
-        expanded: false, category_Name: 'Moka Pot', sub_Category: [
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Total Time: ~6 minutes</Text>},
-          { id: 2, name: <Text style={styles.sub_Category_Text}>Directions:</Text>},
-          { id: 3, name: <Text style={styles.sub_Category_Body}>
+        expanded: false, categoryName: 'Moka Pot', subCategory: [
+          { id: 2, name: <Text style={styles.subCategoryText}>Total Time: ~6 minutes</Text>},
+          { id: 2, name: <Text style={styles.subCategoryText}>Directions:</Text>},
+          { id: 3, name: <Text style={styles.subCategoryBody}>
             1. Bring kettle water to a boil and remove from heat. Do this to keep the temperature of the moka pot from getting too hot and cooking the coffee, imparting a metallic taste.
             {'\n\n'}2. Grind your coffee on a drip coffee setting, about as fine as table salt. You need enough coffee to fill the filter basket, which is about 15 to 17 grams (or about 2.5 Tablespoons) for a 4-cup Mokapot.
             {'\n\n'}3. Add the heated water and fill to the line in the bottom of the brewer, or just up to the screw on the outside.
@@ -214,10 +143,10 @@ export default class App extends Component {
       }
     ];
 
-    this.state = { AccordionData: [...array] }
+    this.state = { AccordionData: [...array] };
   }
 
-  update_Layout = (index) => {
+  updateLayout(index) {
 
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
@@ -228,83 +157,61 @@ export default class App extends Component {
     this.setState(() => {
       return {
         AccordionData: array
-      }
+      };
     });
   }
 
   render() {
     return (
-      <View style={styles.MainContainer}>
-
-        <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 5 }}>
+      <View style={styles.mainContainer}>
+        <ScrollView style={{ paddingHorizontal: 10, paddingVertical: 5 }}>
           {
-            this.state.AccordionData.map((item, key) =>
-              (
-                <Expandable_ListView key={item.category_Name} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
-              ))
+            this.state.AccordionData.map((item, key) => (
+              <ExpandableListView key={item.categoryName} onClickFunction={this.updateLayout.bind(this, key)} item={item} />
+            ))
           }
         </ScrollView>
-
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+Brew.navigationOptions = {
+  headerTitle: 'Brew',
+  headerTitleStyle: {
+    fontFamily: 'knockout46',
+    fontSize: 60,
+    alignItems: 'center',
+    color: Colors.spanishWhite
+  },
+  headerStyle: {
+    backgroundColor: Colors.mandy,
+  },
+  headerTitleContainerStyle: {
+    height: 70,
+  }
+};
 
-  MainContainer: {
+const styles = StyleSheet.create({
+  mainContainer: {
     flex: 1,
     justifyContent: 'center',
     paddingTop: (Platform.OS === 'ios') ? 20 : 0,
     backgroundColor: Colors.mandy,
   },
-
-  iconStyle: {
-    width: 15,
-    height: 10,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    right: 15,
-    color: Colors.spanishWhite,
-  },
-
-  sub_Category_Text: {
-    fontSize: 15,
-    fontFamily: 'Arial',
-    color: Colors.spanishWhite,
-    padding: 5,
-    backgroundColor: Colors.santeFe,
-    fontWeight: "bold",
-  },
-
-  sub_Category_Body: {
+  subCategoryBody: {
     fontSize: 13,
     fontFamily: 'Arial',
     color: Colors.spanishWhite,
     padding: 10,
     backgroundColor: Colors.santeFe,
   },
-
-  category_Text: {
-    textAlign: 'left',
+  subCategoryText: {
+    fontSize: 15,
+    fontFamily: 'Arial',
     color: Colors.spanishWhite,
-    fontSize: 35,
-    fontFamily: 'knockout46',
-    letterSpacing: 1,
-    padding: 10
-  },
-
-  category_View: {
-    marginVertical: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: Colors.santeFe
-  },
-
-  Btn: {
-    padding: 10,
-    backgroundColor: '#FF6F00'
+    padding: 5,
+    backgroundColor: Colors.santeFe,
+    fontWeight: 'bold',
   }
-
 });

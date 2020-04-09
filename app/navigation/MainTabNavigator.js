@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faMapMarkerAlt, faCoffee, faTint } from '@fortawesome/free-solid-svg-icons';
 
 import Login from '../screens/Login';
+import Find from '../screens/Find';
 import Brew from '../screens/Brew';
 import NewTaste from '../screens/NewTaste';
 import Taste from '../screens/Taste';
@@ -34,21 +35,21 @@ TasteStack.navigationOptions = {
 
 TasteStack.path = '';
 
-const HomeStack = createStackNavigator(
+const FindStack = createStackNavigator(
   {
-    Home: Login,
+    Find: Find,
   },
   config
 );
 
-HomeStack.navigationOptions = {
+FindStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
     <FontAwesomeIcon icon={faMapMarkerAlt} size={26} />
   ),
 };
 
-HomeStack.path = '';
+FindStack.path = '';
 
 const BrewStack = createStackNavigator(
   {
@@ -68,7 +69,7 @@ BrewStack.navigationOptions = {
 BrewStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  FindStack,
   TasteStack,
   BrewStack,
 });

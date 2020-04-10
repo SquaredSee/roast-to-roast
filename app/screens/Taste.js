@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { LayoutAnimation, View, Text, Image, StyleSheet, Button } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import { NavigationEvents } from 'react-navigation';
 
 import ExpandableListView from '../components/ExpandableList';
 
@@ -41,14 +42,25 @@ export default class TasteNotes extends Component {
   }
 
   buildLogList(data) {
-    return data.map((log) => ({
-      expanded: false,
-      categoryName: log.coffee,
-      subCategory: [
-        { text: <Text style={styles.subCategoryText}>{`${log.date}`}</Text> },
-        { text: <Text style={styles.subCategoryBody}>{`${log.tasting_note_1}`}</Text> }
-      ]
-    }));
+    return data.map((log) => {
+      const item = {
+        expanded: false,
+        categoryName: `${log.shop_name} - ${log.coffee}`,
+        subCategory: [
+          { text: `${log.date}` },
+          { text: `Rating: ${log.rating}/10` },
+          { text: 'Taste notes:' },
+          { text: `${log.tasting_note_1}`, body: true }
+        ]
+      };
+      if (log.tasting_note_2) {
+        item.subCategory.push({ text: `${log.tasting_note_2}`, body: true });
+      }
+      if (log.tasting_note_3) {
+        item.subCategory.push({ text: `${log.tasting_note_3}`, body: true });
+      }
+      return item;
+    });
   }
 
   componentDidMount() {
@@ -81,17 +93,18 @@ export default class TasteNotes extends Component {
 
     return(
       <View style={styles.container}>
+
+        <NavigationEvents onDidFocus={this.getLogs} />
+
         <View style={styles.createButtonContainer}>
           <Text style={ styles.addNewText}>Add New</Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('NewTaste')}>
             <Image source={require('../assets/icons/plusButton.png')} style={{width: 40, height: 40}}></Image>
           </TouchableOpacity>
         </View>
-        <View style={styles.noteListContainer}>
-          <ScrollView style={{ paddingHorizontal: 10, paddingVertical: 5 }}>
-            {logList}
-          </ScrollView>
-        </View>
+        <ScrollView style={{ paddingHorizontal: 10, paddingVertical: 5 }}>
+          {logList}
+        </ScrollView>
       </View>
     );
   }
@@ -117,23 +130,18 @@ TasteNotes.navigationOptions = {
 const styles = StyleSheet.create({
 
   container: {
-    flex:1,
-    justifyContent: 'center',
+    // flex:1,
+    height: '100%',
+    // justifyContent: 'flex-start',
     backgroundColor: Colors.mandy,
     padding: 10
   },
 
   createButtonContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent:'flex-end',
     padding: 10,
-  },
-
-  noteListContainer: {
-    flex: 4,
-    // alignItems: 'center',
-    // justifyContent:'flex-start',
   },
 
   addNewText: {
@@ -143,22 +151,5 @@ const styles = StyleSheet.create({
     letterSpacing:1,
     textAlign:'center',
     color: Colors.spanishWhite
-  },
-
-  subCategoryBody: {
-    fontSize: 13,
-    fontFamily: 'Arial',
-    color: Colors.spanishWhite,
-    padding: 10,
-    backgroundColor: Colors.santeFe,
-  },
-
-  subCategoryText: {
-    fontSize: 15,
-    fontFamily: 'Arial',
-    color: Colors.spanishWhite,
-    padding: 5,
-    backgroundColor: Colors.santeFe,
-    fontWeight: 'bold',
   }
 });

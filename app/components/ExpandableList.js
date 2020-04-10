@@ -55,8 +55,10 @@ export default class ExpandableListView extends Component {
         <View style={{ height: this.state.layoutHeight, overflow: 'hidden' }}>
           {
             this.props.item.subCategory.map((item, key) => (
-              <View key={key} style={styles.subCategoryText} >
-                <Text>{item.name}</Text>
+              <View key={key} >
+                <Text style={item.body ? styles.subCategoryBody : styles.subCategoryText}>
+                  {item.text}
+                </Text>
               </View>
             ))
           }
@@ -67,6 +69,10 @@ export default class ExpandableListView extends Component {
 }
 
 const styles = StyleSheet.create({
+  panelHolder: {
+    marginBottom: 10
+  },
+
   iconStyle: {
     width: 15,
     height: 10,
@@ -85,6 +91,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  subCategoryBody: {
+    fontSize: 13,
+    fontFamily: 'Arial',
+    color: Colors.spanishWhite,
+    padding: 10,
+    backgroundColor: Colors.santeFe,
+  },
+
   categoryText: {
     textAlign: 'left',
     color: Colors.spanishWhite,
@@ -95,7 +109,7 @@ const styles = StyleSheet.create({
   },
 
   categoryView: {
-    marginVertical: 5,
+    // marginVertical: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

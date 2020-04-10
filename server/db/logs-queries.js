@@ -8,7 +8,8 @@ const cols = [
   'logs.tasting_note_2',
   'logs.tasting_note_3',
   'logs.origin',
-  'logs.date'
+  'logs.date',
+  'logs.shop_name'
 ];
 
 // const update_cols = ['logs.shop_id', 'logs.user_id', ...cols];

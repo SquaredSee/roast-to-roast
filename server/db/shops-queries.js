@@ -1,6 +1,6 @@
 const knex = require('./knex');
 
-const cols = ['id', 'name', 'location', 'website', 'description'];
+const cols = ['id', 'name', 'latitude', 'longitude', 'address', 'website', 'description'];
 
 module.exports = {
   all: () => knex('shops')

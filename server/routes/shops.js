@@ -14,10 +14,10 @@ const isValidId = (req, res, next) => {
 
 const isValidShop = (shop) => {
   const name = typeof shop.name === 'string' && shop.name.trim() !== '';
-  const location = typeof shop.location === 'string' && shop.location.trim() !== '';
-  const website = typeof shop.website === 'string' && shop.website.trim() !== '';
-  const description = typeof shop.description === 'string' && shop.description.trim() !== '';
-  return name && location && website && description;
+  const address = typeof shop.location === 'string' && shop.location.trim() !== '';
+  const latitude = typeof shop.latitude === 'number';
+  const longitude = typeof shop.longitude === 'number';
+  return name && address && latitude && longitude;
 };
 
 router.get('/', (_req, res, _next) => {

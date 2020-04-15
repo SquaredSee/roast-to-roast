@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Platform } from 'react-native';
+import { Platform, ColorPropType } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
@@ -8,9 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faMapMarkerAlt, faCoffee, faTint } from '@fortawesome/free-solid-svg-icons';
 
 import Login from '../screens/Login';
+import Find from '../screens/Find';
 import Brew from '../screens/Brew';
 import NewTaste from '../screens/NewTaste';
 import Taste from '../screens/Taste';
+import Colors from '../constants/Colors';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -28,32 +30,33 @@ const TasteStack = createStackNavigator(
 TasteStack.navigationOptions = {
   tabBarLabel: 'Taste',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faCoffee} size={26} />
+    <FontAwesomeIcon icon={faCoffee} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
+  headerTitleAlign: 'center'
 };
 
 TasteStack.path = '';
 
-const HomeStack = createStackNavigator(
+const FindStack = createStackNavigator(
   {
-    Home: Login,
+    Find: Find,
   },
   config
 );
 
-HomeStack.navigationOptions = {
+FindStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faMapMarkerAlt} size={26} />
+    <FontAwesomeIcon icon={faMapMarkerAlt} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
+  headerTitleAlign: 'center'
 };
 
-HomeStack.path = '';
+FindStack.path = '';
 
 const BrewStack = createStackNavigator(
   {
     Brew: Brew,
-
   },
   config
 );
@@ -61,17 +64,30 @@ const BrewStack = createStackNavigator(
 BrewStack.navigationOptions = {
   tabBarLabel: 'Brew',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faTint} size={26} />
+    <FontAwesomeIcon icon={faTint} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
+  headerTitleAlign: 'center'
 };
 
 BrewStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  TasteStack,
-  BrewStack,
-});
+const tabNavigator = createBottomTabNavigator(
+  {
+    TasteStack,
+    FindStack,
+    BrewStack,
+  },
+  {
+    initialRouteName: 'FindStack',
+    tabBarOptions: {
+      activeTintColor: Colors.spanishWhite,
+      activeBackgroundColor: Colors.mandy,
+      inactiveTintColor: 'black',
+      inactiveBackgroundColor: Colors.spanishWhite,
+      initialRoute: FindStack
+    }
+  }
+);
 
 tabNavigator.path = '';
 

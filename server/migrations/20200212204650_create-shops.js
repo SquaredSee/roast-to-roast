@@ -4,7 +4,11 @@ exports.up = function(knex) {
     table.increments('id');
     table.text('name')
       .notNullable();
-    table.text('location')
+    table.integer('latitude')
+      .notNullable();
+    table.integer('longitude')
+      .notNullable();
+    table.text('address')
       .notNullable();
     table.integer('roaster_id')
       .unsigned();

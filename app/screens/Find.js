@@ -126,14 +126,10 @@ Find.navigationOptions = {
   headerTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 60,
-    alignItems: 'center',
     color: Colors.spanishWhite
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
-  },
-  headerTitleContainerStyle: {
-    height: 70,
   }
 };
 

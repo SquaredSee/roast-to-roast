@@ -152,14 +152,10 @@ NewTaste.navigationOptions = {
   headerTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 60,
-    alignItems: 'center',
     color: Colors.spanishWhite
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
-  },
-  headerTitleContainerStyle: {
-    height: 70,
   },
   headerBackTitle: 'Cancel',
   headerBackTitleStyle: {
@@ -167,12 +163,9 @@ NewTaste.navigationOptions = {
     fontSize: 30,
     color: Colors.spanishWhite
   }
-
-
 };
 
 const styles = StyleSheet.create({
-
   container: {
     justifyContent: 'center',
     paddingTop: 60,
@@ -180,7 +173,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: Colors.mandy,
   },
-
   fieldText: {
     fontFamily: 'knockout46',
   }

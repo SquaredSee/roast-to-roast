@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import Colors from '../constants/Colors';
 
 import t from 'tcomb-form-native';
@@ -161,6 +161,16 @@ NewTaste.navigationOptions = {
     height: 60,
     backgroundColor: Colors.mandy
   },
+  headerLeftContainerStyle: {
+    height: 60,
+    backgroundColor: Colors.mandy
+  },
+  headerRightContainerStyle: {
+    width: '20%',
+    height: 60,
+    backgroundColor: Colors.mandy
+  },
+  headerRight: () => <View></View>,
   headerBackTitle: 'Cancel',
   headerBackTitleStyle: {
     fontFamily: 'knockout46',

@@ -30,7 +30,7 @@ const TasteStack = createStackNavigator(
 TasteStack.navigationOptions = {
   tabBarLabel: 'Taste',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faCoffee} size={26} color={focused ? Colors.spanishWhite: 'black'} />
+    <FontAwesomeIcon icon={faCoffee} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
   headerTitleAlign: 'center'
 };
@@ -47,7 +47,7 @@ const FindStack = createStackNavigator(
 FindStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faMapMarkerAlt} size={26} color={focused ? Colors.spanishWhite: 'black'} />
+    <FontAwesomeIcon icon={faMapMarkerAlt} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
   headerTitleAlign: 'center'
 };
@@ -64,31 +64,30 @@ const BrewStack = createStackNavigator(
 BrewStack.navigationOptions = {
   tabBarLabel: 'Brew',
   tabBarIcon: ({ focused }) => (
-    <FontAwesomeIcon icon={faTint} size={26} color={focused ? Colors.spanishWhite: 'black'} />
+    <FontAwesomeIcon icon={faTint} size={26} color={focused ? Colors.spanishWhite : 'black'} />
   ),
   headerTitleAlign: 'center'
 };
 
 BrewStack.path = '';
 
-const tabNavigator = createBottomTabNavigator({
-  TasteStack,
-  FindStack,
-  BrewStack,
-},
-{
-  initialRouteName: 'FindStack',
-  tabBarOptions: {
-    activeTintColor: Colors.spanishWhite,
-    activeBackgroundColor: Colors.mandy,
-    inactiveTintColor: 'black',
-    inactiveBackgroundColor: Colors.spanishWhite,
-    initialRoute: FindStack
-
+const tabNavigator = createBottomTabNavigator(
+  {
+    TasteStack,
+    FindStack,
+    BrewStack,
+  },
+  {
+    initialRouteName: 'FindStack',
+    tabBarOptions: {
+      activeTintColor: Colors.spanishWhite,
+      activeBackgroundColor: Colors.mandy,
+      inactiveTintColor: 'black',
+      inactiveBackgroundColor: Colors.spanishWhite,
+      initialRoute: FindStack
+    }
   }
-
-});
-
+);
 
 tabNavigator.path = '';
 

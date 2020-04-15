@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View, Platform, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Platform, Text, ScrollView, TouchableOpacity } from 'react-native';
 
 import Colors from '../constants/Colors';
 
@@ -14,9 +14,9 @@ const latlng = (lat, lng) => ({
 });
 
 const describe = (shop) => {
-  let desc = `Address: ${shop.address}`;
+  let desc = `${shop.address}`;
   if (shop.website) {
-    desc += `\nWebsite: ${shop.website}`;
+    desc += `\n${shop.website}`;
   }
   if (shop.description) {
     desc += `\n\n${shop.description}`;
@@ -53,9 +53,10 @@ export default class Find extends Component {
 
   buildListItem(marker) {
     return (
-      <View key={marker.id} style={styles.shopListItem}>
-        <Text onPress={() => this.focusMap([marker.id.toString()])}>{marker.title}</Text>
-      </View>
+      <TouchableOpacity key={marker.id} style={styles.shopListItem} onPress={() => this.focusMap([marker.id.toString()])}>
+        <Text style={styles.listItemText}>{marker.title}</Text>
+        <Text style={styles.listItemText}>{marker.description}</Text>
+      </TouchableOpacity>
     );
   }
 
@@ -153,11 +154,17 @@ const styles = StyleSheet.create({
   },
   shopList: {
     flex: 1,
-    width: '100%'
+    width: '100%',
+    marginTop: 5,
   },
   shopListItem: {
     backgroundColor: Colors.santeFe,
-    padding: 10
+    padding: 5,
+    marginHorizontal: 10,
+    marginVertical: 5
+  },
+  listItemText: {
+    color: Colors.spanishWhite
   }
 });
 

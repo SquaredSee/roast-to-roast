@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import MapView, { Marker, Callout } from 'react-native-maps';
-import { StyleSheet, View, Platform, Text } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, View, Platform, Text, ScrollView } from 'react-native';
 
 import Colors from '../constants/Colors';
+
+// Coordinates for Cincinnati
+const LATITUDE = 39.10;
+const LONGITUDE = -84.51;
 
 const latlng = (lat, lng) => ({
   latitude: lat,
@@ -26,7 +30,7 @@ const buildMarkerList = (data) => (
     title: shop.name,
     coordinate: latlng(shop.latitude, shop.longitude),
     description: describe(shop),
-    color: `#${Math.floor(Math.random()*16777215).toString(16)}`
+    color: `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
   }))
 );
 
@@ -34,15 +38,25 @@ export default class Find extends Component {
   constructor(props) {
     super(props);
     this.handleRegionChange = this.handleRegionChange.bind(this);
+    this.focusMap = this.focusMap.bind(this);
+    this.buildListItem = this.buildListItem.bind(this);
     this.state = {
       region: {
-        latitude: 39.10,
-        longitude: -84.51,
-        latitudeDelta: 0.1,
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: 0,
         longitudeDelta: 0.05
       },
       markers: []
     };
+  }
+
+  buildListItem(marker) {
+    return (
+      <View key={marker.id} style={styles.shopListItem}>
+        <Text onPress={() => this.focusMap([marker.id.toString()])}>{marker.title}</Text>
+      </View>
+    );
   }
 
   getMarkers() {
@@ -70,18 +84,26 @@ export default class Find extends Component {
     this.getMarkers();
   }
 
+  focusMap(markers) {
+    this.map.fitToSuppliedMarkers(markers);
+  }
+
   render() {
     return(
       <View style={styles.mainContainer}>
         <MapView
           style={styles.mapStyle}
-          region={this.state.region}
+          initialRegion={this.state.region}
           onRegionChangeComplete={this.handleRegionChange}
           customMapStyle={mapStyle}
+          ref={(ref) => {
+            this.map = ref;
+          }}
         >
           {this.state.markers.map((marker) => (
             <Marker
               key={marker.id}
+              identifier={marker.id.toString()}
               coordinate={marker.coordinate}
               title={marker.title}
               description={marker.description}
@@ -91,6 +113,9 @@ export default class Find extends Component {
             </Marker>
           ))}
         </MapView>
+        <ScrollView style={styles.shopList}>
+          {this.state.markers.map((marker) => this.buildListItem(marker))}
+        </ScrollView>
       </View>
     );
   }
@@ -114,15 +139,25 @@ Find.navigationOptions = {
 
 const styles = StyleSheet.create({
   mainContainer: {
+    // ...StyleSheet.absoluteFillObject,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     paddingTop: (Platform.OS === 'ios') ? 20 : 0,
     backgroundColor: Colors.mandy,
   },
   mapStyle: {
-    width: '100%',
-    height: '100%'
+    // ...StyleSheet.absoluteFillObject
+    height: '60%',
+    width: '100%'
+  },
+  shopList: {
+    flex: 1,
+    width: '100%'
+  },
+  shopListItem: {
+    backgroundColor: Colors.santeFe,
+    padding: 10
   }
 });
 

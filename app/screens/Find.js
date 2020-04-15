@@ -130,6 +130,10 @@ Find.navigationOptions = {
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
+  },
+  headerTitleContainerStyle: {
+    height: 60,
+    backgroundColor: Colors.mandy
   }
 };
 

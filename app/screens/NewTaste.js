@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import Colors from '../constants/Colors';
 
 import t from 'tcomb-form-native';
@@ -152,27 +152,34 @@ NewTaste.navigationOptions = {
   headerTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 60,
-    alignItems: 'center',
     color: Colors.spanishWhite
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
   },
   headerTitleContainerStyle: {
-    height: 70,
+    height: 60,
+    backgroundColor: Colors.mandy
   },
+  headerLeftContainerStyle: {
+    height: 60,
+    backgroundColor: Colors.mandy
+  },
+  headerRightContainerStyle: {
+    width: '20%',
+    height: 60,
+    backgroundColor: Colors.mandy
+  },
+  headerRight: () => <View></View>,
   headerBackTitle: 'Cancel',
   headerBackTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 30,
     color: Colors.spanishWhite
   }
-
-
 };
 
 const styles = StyleSheet.create({
-
   container: {
     justifyContent: 'center',
     paddingTop: 60,
@@ -180,7 +187,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: Colors.mandy,
   },
-
   fieldText: {
     fontFamily: 'knockout46',
   }

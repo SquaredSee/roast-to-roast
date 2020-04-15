@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { LayoutAnimation, View, Text, Image, StyleSheet, Button } from 'react-native';
+import { LayoutAnimation, View, Text, Image, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { NavigationEvents } from 'react-navigation';
 
@@ -115,16 +115,15 @@ TasteNotes.navigationOptions = {
   headerTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 60,
-    alignItems: 'center',
-    color: Colors.spanishWhite,
+    color: Colors.spanishWhite
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
   },
   headerTitleContainerStyle: {
-    height: 70 //trying to enlarge the header box size
-  },
-  headerStatusBarHeight: 50 //trying to rid of the small semi-tanslucent bar
+    height: 60,
+    backgroundColor: Colors.mandy
+  }
 };
 
 const styles = StyleSheet.create({

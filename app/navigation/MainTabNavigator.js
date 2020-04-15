@@ -14,10 +14,14 @@ import NewTaste from '../screens/NewTaste';
 import Taste from '../screens/Taste';
 import Colors from '../constants/Colors';
 
-const config = Platform.select({
-  web: { headerMode: 'screen' },
-  default: {},
-});
+// const config = Platform.select({
+//   web: { headerMode: 'screen' },
+//   default: {},
+// });
+const config = {
+  // https://stackoverflow.com/a/45027059
+  headerLayoutPreset: 'center'
+};
 
 const TasteStack = createStackNavigator(
   {
@@ -31,8 +35,7 @@ TasteStack.navigationOptions = {
   tabBarLabel: 'Taste',
   tabBarIcon: ({ focused }) => (
     <FontAwesomeIcon icon={faCoffee} size={26} color={focused ? Colors.spanishWhite : 'black'} />
-  ),
-  headerTitleAlign: 'center'
+  )
 };
 
 TasteStack.path = '';
@@ -48,8 +51,7 @@ FindStack.navigationOptions = {
   tabBarLabel: 'Find',
   tabBarIcon: ({ focused }) => (
     <FontAwesomeIcon icon={faMapMarkerAlt} size={26} color={focused ? Colors.spanishWhite : 'black'} />
-  ),
-  headerTitleAlign: 'center'
+  )
 };
 
 FindStack.path = '';
@@ -65,8 +67,7 @@ BrewStack.navigationOptions = {
   tabBarLabel: 'Brew',
   tabBarIcon: ({ focused }) => (
     <FontAwesomeIcon icon={faTint} size={26} color={focused ? Colors.spanishWhite : 'black'} />
-  ),
-  headerTitleAlign: 'center'
+  )
 };
 
 BrewStack.path = '';

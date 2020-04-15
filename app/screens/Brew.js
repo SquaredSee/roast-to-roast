@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, Platform } from 'react-native';
+import { LayoutAnimation, StyleSheet, View, ScrollView, UIManager, Platform } from 'react-native';
 
 import Colors from '../constants/Colors';
 import ExpandableListView from '../components/ExpandableList';
@@ -218,14 +218,14 @@ Brew.navigationOptions = {
   headerTitleStyle: {
     fontFamily: 'knockout46',
     fontSize: 60,
-    alignItems: 'center',
     color: Colors.spanishWhite
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
   },
   headerTitleContainerStyle: {
-    height: 70,
+    height: 60,
+    backgroundColor: Colors.mandy
   }
 };
 

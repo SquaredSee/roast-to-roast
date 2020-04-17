@@ -221,11 +221,8 @@ Brew.navigationOptions = {
     color: Colors.spanishWhite
   },
   headerStyle: {
+    height: 70,
     backgroundColor: Colors.mandy,
-  },
-  headerTitleContainerStyle: {
-    height: 60,
-    backgroundColor: Colors.mandy
   }
 };
 

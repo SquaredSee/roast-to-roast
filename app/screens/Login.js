@@ -1,9 +1,17 @@
-import React, {Component} from 'react';
-import {View, TextInput, Text, Image, Button, StyleSheet, ImageBackground, Keyboard, TouchableWithoutFeedback} from 'react-native';
+import React, { Component, useState } from 'react';
+import { AsyncStorage, View, TextInput, Image, Button, StyleSheet, ImageBackground } from 'react-native';
 import Colors from '../constants/Colors';
 
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
+  const _signInAsync = async () => {
+    await AsyncStorage.setItem('userToken', 'abc');
+    props.navigation.navigate('Main');
+  };
+
   return(
     <ImageBackground
       source={require('../assets/images/background-mandy.png')}
@@ -23,6 +31,8 @@ export default function LoginScreen() {
               style={styles.emailInput}
               placeholder='Email'
               textContentType= 'username'
+              onChangeText={(text) => setEmail(text)}
+              value={email}
               placeholderTextColor= '#D3D3D3'
             />
             <TextInput
@@ -30,6 +40,8 @@ export default function LoginScreen() {
               placeholder='Password'
               textContentType='password'
               secureTextEntry={true}
+              onChangeText={(text) => setPass(text)}
+              value={pass}
               placeholderTextColor= '#D3D3D3'
             />
           </View>
@@ -38,7 +50,8 @@ export default function LoginScreen() {
           <Button
             title='Login'
             color={Colors.spanishWhite}
-            />
+            onPress={_signInAsync}
+          />
         </View>
       </View>
     </ImageBackground>

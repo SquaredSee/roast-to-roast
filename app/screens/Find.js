@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View, Platform, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { AsyncStorage,
+  StyleSheet,
+  View,
+  Platform,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Button
+} from 'react-native';
 
 import Colors from '../constants/Colors';
 
@@ -50,6 +58,29 @@ export default class Find extends Component {
       markers: []
     };
   }
+
+  static navigationOptions = ({navigation}) => ({
+    headerTitle: 'Find',
+    headerTitleStyle: {
+      fontFamily: 'knockout46',
+      fontSize: 60,
+      color: Colors.spanishWhite
+    },
+    headerStyle: {
+      backgroundColor: Colors.mandy,
+      height: 70
+    },
+    headerRight: () => (
+      <Button
+        onPress={async () => {
+          await AsyncStorage.clear();
+          navigation.navigate('Auth');
+        }}
+        title="Log Out"
+        color={Colors.mandy}
+      />
+    )
+  });
 
   buildListItem(marker) {
     return (
@@ -121,22 +152,6 @@ export default class Find extends Component {
     );
   }
 }
-
-Find.navigationOptions = {
-  headerTitle: 'Find',
-  headerTitleStyle: {
-    fontFamily: 'knockout46',
-    fontSize: 60,
-    color: Colors.spanishWhite
-  },
-  headerStyle: {
-    backgroundColor: Colors.mandy,
-  },
-  headerTitleContainerStyle: {
-    height: 60,
-    backgroundColor: Colors.mandy
-  }
-};
 
 const styles = StyleSheet.create({
   mainContainer: {

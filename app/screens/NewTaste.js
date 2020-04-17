@@ -156,21 +156,8 @@ NewTaste.navigationOptions = {
   },
   headerStyle: {
     backgroundColor: Colors.mandy,
+    height: 70,
   },
-  headerTitleContainerStyle: {
-    height: 60,
-    backgroundColor: Colors.mandy
-  },
-  headerLeftContainerStyle: {
-    height: 60,
-    backgroundColor: Colors.mandy
-  },
-  headerRightContainerStyle: {
-    width: '20%',
-    height: 60,
-    backgroundColor: Colors.mandy
-  },
-  headerRight: () => <View></View>,
   headerBackTitle: 'Cancel',
   headerBackTitleStyle: {
     fontFamily: 'knockout46',

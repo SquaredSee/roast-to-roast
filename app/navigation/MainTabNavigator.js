@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Platform, ColorPropType } from 'react-native';
+import { Platform, ColorPropType, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 

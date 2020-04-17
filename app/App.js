@@ -42,7 +42,7 @@ async function loadResourcesAsync() {
       ...Ionicons.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+      'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
       'knockout46': require('./assets/fonts/Knockout-46.otf')
     }),
   ]);

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
   subCategoryText: {
     fontSize: 15,
-    fontFamily: 'Arial',
+    fontFamily: 'roboto',
     color: Colors.spanishWhite,
     padding: 5,
     backgroundColor: Colors.santeFe,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 
   subCategoryBody: {
     fontSize: 13,
-    fontFamily: 'Arial',
+    fontFamily: 'roboto',
     color: Colors.spanishWhite,
     padding: 10,
     backgroundColor: Colors.santeFe,

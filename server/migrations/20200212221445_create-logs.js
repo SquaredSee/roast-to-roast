@@ -10,7 +10,8 @@ exports.up = function(knex) {
     table.text('origin')
       .defaultTo('');
     table.text('tasting_note_1')
-      .notNullable();
+      .notNullable()
+      .defaultTo('');
     table.text('tasting_note_2')
       .defaultTo('');
     table.text('tasting_note_3')

@@ -59,6 +59,10 @@ export default class TasteNotes extends Component {
       if (log.tasting_note_3) {
         item.subCategory.push({ text: `${log.tasting_note_3}`, body: true });
       }
+      if (log.origin) {
+        item.subCategory.push({ text: `Origin: ${log.origin}` });
+      }
+
       return item;
     });
   }
@@ -84,7 +88,7 @@ export default class TasteNotes extends Component {
 
   render() {
     let logList = this.state.logs.map((log, key) => (
-      <ExpandableListView key={log.id} item={log} onClickFunction={this.updateLayout.bind(this, key)} />
+      <ExpandableListView key={key} item={log} onClickFunction={this.updateLayout.bind(this, key)} />
     ));
 
     if (logList.length === 0) {

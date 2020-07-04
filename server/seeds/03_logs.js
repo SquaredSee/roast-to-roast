@@ -1,7 +1,7 @@
 exports.seed = function(knex) {
   const logs = [
     {
-      coffee: 'Beans - Finca de los Andes',
+      coffee: 'Finca de los Andes Beans',
       tasting_note_1: 'Chocolate',
       tasting_note_2: 'Fruit',
       tasting_note_3: '',
